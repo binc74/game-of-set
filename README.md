@@ -4,7 +4,7 @@
 ### Roles
 * Overall Project Manager:
 * Coding Manager: Bin Chen
-* Testing Manager:
+* Testing Manager: Jeb Alawi
 * Documentation:
 
 ### Contributions
