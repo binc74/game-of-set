@@ -2,7 +2,7 @@
 ### Game of Set
 
 ### Roles
-* Overall Project Manager:
+* Overall Project Manager: Josh Wright
 * Coding Manager: Bin Chen
 * Testing Manager:
 * Documentation:
