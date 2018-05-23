@@ -13,13 +13,13 @@ class MyTest < Test::Unit::TestCase
   # down fixture information.
 
   def test_constructor
-    assert_equal(81, Deck.new.length)
+    assert_equal(81, Deck.new.size)
   end
 
   def test_remove
     deck = Deck.new
-    deck.remove
-    assert_equal(80, deck.length)
+    deck.remove!
+    assert_equal(80, deck.size)
   end
 
   def teardown
