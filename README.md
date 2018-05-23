@@ -3,7 +3,7 @@
 
 ### Roles
 * Overall Project Manager:
-* Coding Manager:
+* Coding Manager: Bin Chen
 * Testing Manager:
 * Documentation:
 
