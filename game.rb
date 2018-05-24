@@ -3,6 +3,7 @@ require_relative "card"
 require_relative "player"
 #Created by Josh Wright 5/23/18
 #Implemented by Josh Wright 5/23/18 - Basic Functionality
+# Bin Chen implemented the method replace_cards
 
 class Game
   #    ----    Constructor method for Game class.    ----    #
@@ -54,7 +55,11 @@ class Game
       @winner = getWinner
     end
   end
-  
+
+  def replace_cards(cards_index)
+    cards_index.each {|index| @dealersHand[index] = @deck.remove!}
+  end
+
   #replenishes the dealers hand each time a player finds a set
   # @updates dealersHand
   def replenishHand!

@@ -23,8 +23,6 @@ end
 # create and start the game
 
 game = Game.new name_list
-choice = []
-
 
 until game.hasEnded?
   game.replenishHand!
@@ -36,15 +34,15 @@ until game.hasEnded?
 
   hand = choice.map {|index| game.getDealersHand[index]}
 
-  for c in hand
-    puts c.toString
-  end
+  hand.each {|c| puts "You choose: " + c.toString}
 
-  #if isSet? hand
-  #  puts "Congrats! It's a set"
-  #elsif
-  #  puts "Not a set!"
-  #end
+  if game.isSet? hand
+    puts "Congrats! It's a set"
+    game.replace_cards choice
+  elsif
+    puts "Not a set!"
+    game.replace_cards choice
+  end
 end
 
 puts "Game ended!"
