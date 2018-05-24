@@ -11,16 +11,13 @@ class Deck
   end
 
   def size
-    @CardDeck.count
+    @CardDeck.length
   end
 
   # Public: Randomly removed a card from the deck list and returns the card
   #
   #  Returns the card removed from the deck
   def remove!
-
-
-    to_remove = Random.rand(@CardDeck.count)
-    @CardDeck.delete_at to_remove
+    @CardDeck.delete_at Random.rand(@CardDeck.length)
   end
 end

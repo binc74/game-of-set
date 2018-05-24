@@ -3,6 +3,7 @@ require_relative "card"
 require_relative "player"
 #Created by Josh Wright 5/23/18
 #Implemented by Josh Wright 5/23/18 - Basic Functionality
+# Bin Chen implemented the method replace_cards
 
 class Game
   #    ----    Constructor method for Game class.    ----    #
@@ -18,7 +19,6 @@ class Game
     @dealersHand = []
     @hasEnded = false
     @winner = nil
-
     12.times {@dealersHand.push(@deck.remove!)}
   end
 
@@ -28,9 +28,17 @@ class Game
   #requires @hasEnded = true
   def getWinner
     maxScorePlayer = @listOfPlayers[0]
-    for i in 1...(@listOfPlayers.length())
-      maxScorePlayer = @listOfPlayers[i] if maxScorePlayer.score < listOfPlayers[i]
+    for player in 1...(@listOfPlayers.length())
+      maxScorePlayer = @listOfPlayers[player] if maxScorePlayer.score < listOfPlayers[player]
     end
+  end
+
+  def getDealersHand
+    @dealersHand
+  end
+
+  def display_cards()
+    @dealersHand.length.times {|i| puts "Card ##{i}: " + @dealerHand[i].toString}
   end
 
   def setLeftInDealersHand?
@@ -50,7 +58,11 @@ class Game
       @winner = getWinner
     end
   end
-  
+
+  def replace_cards(cards_index)
+    cards_index.each {|index| @dealersHand[index] = @deck.remove!}
+  end
+
   #replenishes the dealers hand each time a player finds a set
   # @updates dealersHand
   def replenishHand!
