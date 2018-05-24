@@ -8,6 +8,7 @@ class Deck
   def initialize
     @CardDeck = []
     (1..3).each { |i| (1..3).each { |j| (1..3).each { |k| (1..3).each { |l| @CardDeck.push(Card.new i, j, k, l)}}}}
+    @CardDeck.shuffle!
   end
 
   def size

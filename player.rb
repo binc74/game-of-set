@@ -1,7 +1,8 @@
 require 'set'
 class Player
 
-  # Author: Jeb Alawi
+  # Author: Jeb Alawi 5/23/18
+  #
 
   # Constructor for Player class
   def initialize (name)
