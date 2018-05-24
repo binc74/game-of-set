@@ -33,6 +33,10 @@ class Game
     end
   end
 
+  def getDealersHand
+    @dealersHand
+  end
+
   def setLeftInDealersHand?
     setLeft = false
     for card1 in @dealersHand
