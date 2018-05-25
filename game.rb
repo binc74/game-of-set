@@ -4,8 +4,11 @@ require_relative "player"
 #Created by Josh Wright 5/23/18
 #Implemented by Josh Wright 5/23/18 - Basic Functionality
 # Bin Chen implemented the method replace_cards
+# Edited by Houyi Fan 5/24/18 - add "attr_accessor" for instance variables to help test the methods in this class, Fix a bug in setLeftInDealersHand
 
 class Game
+  attr_accessor :listOfPlayers, :deck, :dealersHand, :hasEnded, :winner # add getter and setter methods to help test the methods in this class
+
   #    ----    Constructor method for Game class.    ----    #
 
   # @author Josh Wright
@@ -45,11 +48,12 @@ class Game
     setLeft = false
     for card1 in @dealersHand
       for card2 in @dealersHand
-        for card3 in @dealersHand.length
+        for card3 in @dealersHand
               setLeft = setLeft || isSet?([card1,card2,card3]) if card1 != card2 && card2 != card3 && card1 != card3
         end
       end
     end
+    return setLeft
   end
 
   def hasEnded?
