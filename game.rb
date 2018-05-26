@@ -29,21 +29,35 @@ class Game
 
   #finds the winner with the highest score
   #requires @hasEnded = true
-  def getWinner
+  def setWinner
     maxScorePlayer = @listOfPlayers[0]
-    for player in 1...(@listOfPlayers.length())
-      maxScorePlayer = @listOfPlayers[player] if maxScorePlayer.score < listOfPlayers[player]
+    for player in @listOfPlayers
+      maxScorePlayer = player if maxScorePlayer.score < player.score
     end
+    return maxScorePlayer
   end
-
+  def winner
+    @winner
+  end
+  def listOfPlayers
+    @listOfPlayers
+  end
+  def resetHand
+    while @dealersHand.length > 0
+      @deck.add! @dealersHand.pop
+    end
+    self.replenishHand!
+  end
   def getDealersHand
     @dealersHand
   end
 
-  def display_cards()
-    @dealersHand.length.times {|i| puts "Card ##{i}: " + @dealerHand[i].toString}
+  def display_cards
+    @dealersHand.length.times {|i| puts "Card ##{i}: " + @dealersHand[i].toString}
   end
-
+  def displayHint
+    puts "Two cards of a set in the hand: #{self.getHint}"
+  end
   def setLeftInDealersHand?
     setLeft = false
     for card1 in @dealersHand
@@ -55,22 +69,46 @@ class Game
     end
     return setLeft
   end
-
-  def hasEnded?
-    if @deck.size == 0 && (@dealersHand.length == 0 || !setLeftInDealersHand?(@dealersHand))
-      @hasEnded = true
-      @winner = getWinner
+  def indexOfCard card
+    for i in 0...@dealersHand.length
+      if card == dealersHand[i]
+        return i
+      end
     end
   end
-
+  def hasEnded?
+    if @deck.size == 0 && (@dealersHand.length == 0 || !setLeftInDealersHand?)
+      @hasEnded = true
+      @winner = setWinner
+    end
+  end
+  def getHint
+    for card1 in @dealersHand
+      for card2 in @dealersHand
+        for card3 in @dealersHand
+          if card1 != card2 && card2 != card3 && card1 != card3 && isSet?([card1,card2,card3])
+            return  puts "\nCard ##{self.indexOfCard card1}: " + card1.toString + "\nCard ##{self.indexOfCard card2}: " + card2.toString #+ "\nCard ##{self.indexOfCard card3}: " + card3.toString
+          end
+      end
+    end
+    end
+    puts "No Set Available"
+  end
   def replace_cards(cards_index)
-    cards_index.each {|index| @dealersHand[index] = @deck.remove!}
+    #cards_index.each {|index|  @dealersHand[index] = @deck.remove!}
+    for i in cards_index
+       if @deck.size > 0
+          @dealersHand[i] = @deck.remove!
+       else
+          @dealersHand.delete_at i
+       end
+    end
   end
 
   #replenishes the dealers hand each time a player finds a set
   # @updates dealersHand
   def replenishHand!
-    while @dealersHand.length < 12
+    while @dealersHand.length < 12 && @deck.size > 0
       @dealersHand.push(@deck.remove!)
     end
   end
@@ -87,27 +125,27 @@ class Game
   # @requires card1 != card2 != card3
   # @returns true if all 3 cards have same color or 3 different colors and false otherwise
   def setColor?(card1,card2,card3)
-    (card1.color == card2.color && card2.color == card3.color) || (card1.color != card2.color && card2.color != card3.color)
+    (card1.color == card2.color && card2.color == card3.color && card1.color == card3.color) || (card1.color != card2.color && card2.color != card3.color && card1.color != card3.color)
   end
 
   #Determines if 3 cards have the same symbol or 3 different symbols
   # @requires card1 != card2 != card3
   # @returns true if all 3 cards have same symbol or 3 different symbols and false otherwise
   def setSymbol?(card1,card2,card3)
-    card1.symbol == card2.symbol && card2.symbol == card3.symbol || (card1.symbol != card2.symbol && card2.symbol != card3.symbol)
+    card1.symbol == card2.symbol && card2.symbol == card3.symbol && card1.symbol == card3.symbol  || (card1.symbol != card2.symbol && card2.symbol != card3.symbol && card1.symbol != card3.symbol)
   end
 
   #Determines if 3 cards have the same shading or 3 different shadings
   # @requires card1 != card2 != card3
   # @returns true if all 3 cards have same shading or 3 different shadings and false otherwise
   def setShading?(card1,card2,card3)
-    card1.shading == card2.shading && card2.shading == card3.shading || (card1.shading != card2.shading && card2.shading != card3.shading)
+    card1.shading == card2.shading && card2.shading == card3.shading && card1.shading == card3.shading || (card1.shading != card2.shading && card2.shading != card3.shading && card1.shading != card3.shading)
   end
   #Determines if 3 cards have the same number or 3 different numbers
   # @requires card1 != card2 != card3
   # @returns true if all 3 cards have same number or 3 different numbers and false otherwise
   def setNumber?(card1,card2,card3)
-    card1.number == card2.number && card2.number == card3.number || (card1.number != card2.number && card2.number != card3.number)
+    card1.number == card2.number && card2.number == card3.number && card1.number == card3.number || (card1.number != card2.number && card2.number != card3.number && card1.number != card3.number)
   end
 
 end

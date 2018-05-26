@@ -18,6 +18,10 @@ class Deck
   #
   #  Returns the card removed from the deck
   def remove!
-    @CardDeck.delete_at Random.rand(@CardDeck.length)
+    @CardDeck.delete_at(Random.rand(@CardDeck.length))
+  end
+
+  def add! card
+    @CardDeck.push card
   end
 end

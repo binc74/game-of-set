@@ -13,9 +13,11 @@ class Player
   # returns player score
   # score = number of winning hands
   def score
-    return @WinningHands.length
+    @WinningHands.length
   end
-
+  def name
+    @Name
+  end
   # requires hand is a set of 3 Card objects
   # adds hand to winning hands
   def addWinningHand(hand)
