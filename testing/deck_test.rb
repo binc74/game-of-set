@@ -1,3 +1,7 @@
+# Created by Bin Chen 5/23/18
+# Implemented by Bin Chen 5/23/18 - add test for constructor and remove
+# Edited by Houyi Fan 5/27/18 - Complete comments
+
 require 'test/unit'
 require_relative '../deck'
 

@@ -1,8 +1,11 @@
+# Created by Josh Wright 5/23/18
+# Implemented by Josh Wright 5/23/18 - Test Plan for isSet
+# Implemented by Houyi Fan 5/24/18 - Test Plan for other methods except isSet. Add documentation for each test case.
+# Edited by Houyi Fan 5/27/18 - Fix a wrong test case
+
 require_relative "../game"
 require 'test/unit'
-#created by Josh Wright 5/23/18
-#Implemented by Josh Wright 5/23/18 - Test Plan for isSet
-#Implemented by Houyi Fan 5/24/18 - Test Plan for other methods except isSet. Add documentation for each test case.
+
 class Game_test < Test::Unit::TestCase
 
   # test for constructor with no player
@@ -45,7 +48,7 @@ class Game_test < Test::Unit::TestCase
     testGame = Game.new([])
     # set the dealersHand to to make it contain no set
     testGame.dealersHand = [Card.new(1, 2, 1, 1), Card.new(1, 2, 2, 2), Card.new(3, 3, 3, 3)]
-    assert_equal(true, testGame.setLeftInDealersHand?)
+    assert_equal(false, testGame.setLeftInDealersHand?)
   end
 
   # test for isSet when it is true

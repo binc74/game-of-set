@@ -1,15 +1,21 @@
-# Josh Wright Created this file in 5/23
-# Bin Chen implements the constructor, the size and remove methods in 5/23
+# Created by Josh Wright 5/23/18
+# Implemented by Bin Chen 5/23/18 - the constructor, the size and remove methods
+# Edited by Houyi Fan 5/26/18 - Complete comments
 
 require_relative "card"
 
-# The Deck contains all the cards that possibly be chosen
+# Deck class contains all the cards that possibly be chosen
 class Deck
+
+  #Constructor for Deck class
+  # CardDeck is an array containing all cards in the deck
+  # Constructor will push all possible cards to the deck. Initially the deck has 81 cards.
   def initialize
     @CardDeck = []
     (1..3).each { |i| (1..3).each { |j| (1..3).each { |k| (1..3).each { |l| @CardDeck.push(Card.new i, j, k, l)}}}}
   end
 
+  # returns the current size of the deck. In other words,the number of cards remained in the deck.
   def size
     @CardDeck.length
   end
@@ -21,7 +27,8 @@ class Deck
     @CardDeck.delete_at(Random.rand(@CardDeck.length))
   end
 
-  def add! card
+  # adds a card to the deck and returns the deck
+  def add! (card)
     @CardDeck.push card
   end
 end

@@ -1,11 +1,14 @@
+# Created by Josh Wright 5/23/18
+# Implemented by Josh Wright 5/23/18 - Basic Functionality
+# Implemented by Bin Chen 5/24/18 - the method replace_cards
+# Edited by Houyi Fan 5/24/18 - Add "attr_accessor" for instance variables to help test the methods in this class, Fix a bug in setLeftInDealersHand
+# Edited by Houyi Fan 5/26/18 - Complete comments
+
 require_relative "deck"
 require_relative "card"
 require_relative "player"
-#Created by Josh Wright 5/23/18
-#Implemented by Josh Wright 5/23/18 - Basic Functionality
-# Bin Chen implemented the method replace_cards
-# Edited by Houyi Fan 5/24/18 - add "attr_accessor" for instance variables to help test the methods in this class, Fix a bug in setLeftInDealersHand
 
+# Game class contains all operations and rules for the game
 class Game
   attr_accessor :listOfPlayers, :deck, :dealersHand, :hasEnded, :winner # add getter and setter methods to help test the methods in this class
 
@@ -14,9 +17,15 @@ class Game
   # @author Josh Wright
   # @requires
   #   |listOfPlayers| > 0
+  # @param
+  #   listOfPlayers - a list that contains all players in the game
   #
+  # deck is the Deck used in the game. It has all cards that are not in dealersHand and winningsHand
+  # dealersHand is the dealers hand list. It contains cards that are providing to players to judge currently. Initially it will have 12 cards
+  # hasEned indicates if the game has ended
+  # winner indicates who is the winner of the game
+  # Constructor will push 12 cards from deck to dealers hand initially to start the game
   def initialize(listOfPlayers)
-
     @listOfPlayers = listOfPlayers
     @deck = Deck.new
     @dealersHand = []
@@ -27,8 +36,8 @@ class Game
 
   #    ----    Kernel Methods    ----    #
 
-  #finds the winner with the highest score
-  #requires @hasEnded = true
+  # finds the winner with the highest score
+  # requires @hasEnded = true
   def setWinner
     maxScorePlayer = @listOfPlayers[0]
     for player in @listOfPlayers
@@ -36,28 +45,41 @@ class Game
     end
     return maxScorePlayer
   end
+
+  # returns the game winner
   def winner
     @winner
   end
+
+  # returns the player list
   def listOfPlayers
     @listOfPlayers
   end
+
+  # resets the dealers hand list by moving current cards in it back to deck and retrieving cards from deck again
   def resetHand
     while @dealersHand.length > 0
       @deck.add! @dealersHand.pop
     end
     self.replenishHand!
   end
+
+  # returns the current list in dealers hand
   def getDealersHand
     @dealersHand
   end
 
+  # puts all cards in the dealers hand list on the console
   def display_cards
     @dealersHand.length.times {|i| puts "Card ##{i}: " + @dealersHand[i].toString}
   end
+
+  # puts a hint on the console
   def displayHint
     puts "Two cards of a set in the hand: #{self.getHint}"
   end
+
+  # returns a boolean value by checking if there is still a set in the dealers hand list
   def setLeftInDealersHand?
     setLeft = false
     for card1 in @dealersHand
@@ -69,19 +91,28 @@ class Game
     end
     return setLeft
   end
-  def indexOfCard card
+
+  # Returns the index of a card by doing a linear search in dealers hand list, and returns nil if we cannot find this card
+  #@param
+  #   card - the card we want to find
+  def indexOfCard (card)
     for i in 0...@dealersHand.length
       if card == dealersHand[i]
         return i
       end
     end
   end
+
+  # setting the hasEnded as true and determining the winner if there is no card remaining in deck and no set in dealers hand
   def hasEnded?
     if @deck.size == 0 && (@dealersHand.length == 0 || !setLeftInDealersHand?)
       @hasEnded = true
       @winner = setWinner
     end
   end
+
+  # puts a hint that contains two card in a set on the console, which lets the player only need find the third card.
+  # And puts a message on the console when there is no set in the deck
   def getHint
     for card1 in @dealersHand
       for card2 in @dealersHand
@@ -94,6 +125,10 @@ class Game
     end
     puts "No Set Available"
   end
+
+  # replaces the dealers hand list by removing cards from deck to it. When there is no card in deck, just delete cards in the dealers hand list
+  # @param
+  #   cards_index - the index of cards that the player chooses
   def replace_cards(cards_index)
     #cards_index.each {|index|  @dealersHand[index] = @deck.remove!}
     for i in cards_index
