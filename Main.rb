@@ -5,11 +5,6 @@ require_relative "game"
 require_relative "card"
 
 
-def display_cards(game)
-  game.getDealersHand.length.times {|i| puts "Card ##{i}: " + game.getDealersHand[i].toString}
-end
-
-
 # gets the player list
 
 name_list = []
@@ -17,7 +12,7 @@ print "Enter the number of players: "
 
 gets.chomp!.to_i.times do |i|
   print "Enter the name of player #{i + 1}: "
-  name_list.push gets.chomp!
+  name_list.push Player.new gets.chomp!
 end
 
 # create and start the game
@@ -26,23 +21,46 @@ game = Game.new name_list
 
 until game.hasEnded?
   game.replenishHand!
-  display_cards game
+  game.resetHand if !game.setLeftInDealersHand?
+  puts "\n--- Dealers Hand ---"
+  game.display_cards
 
-  puts "\nEnter the three cards you choose: "
+  puts "\nEnter the player # who wants to enter a set or 0 for a hint:"
+  playerNum = gets.chomp!.to_i
+  while playerNum < 0 || playerNum > name_list.length
+    puts "\nEnter a valid player #: "
+    playerNum = gets.chomp!.to_i
+  end
+  if playerNum == 0
+    puts "#{playerNum}"
+    game.getHint
+    puts "\nEnter the player # who wants to enter the set:"
+    playerNum = gets.chomp!.to_i
+    while playerNum < 0 || playerNum > name_list.length
+      puts "\nEnter a valid player #: "
+      playerNum = gets.chomp!.to_i
+    end
+  end
+  puts "\nEnter three card numbers that make a set(separated by spaces): "
   choice = gets.chomp!.split.map {|e| e.to_i}
   break unless choice.length == 3 and choice.reduce(true) { |a, b| a and b >= 0 and b <= 11}
-
   hand = choice.map {|index| game.getDealersHand[index]}
-
-  hand.each {|c| puts "You choose: " + c.toString}
-
+  puts
+  hand.each {|c| puts "You chose: " + c.toString}
+  puts
   if game.isSet? hand
-    puts "Congrats! It's a set"
+    puts "Congrats! It's a set\n"
     game.replace_cards choice
+    game.listOfPlayers[playerNum-1].addWinningHand hand
+    puts
   elsif
-    puts "Not a set!"
+    puts "Not a set!\n"
     game.replace_cards choice
+    puts
   end
 end
 
+puts "The winner is #{game.winner.name} "
+puts "--- Scores ---"
+name_list.each {|player| puts "#{player.name}'s score is #{player.score}"}
 puts "Game ended!"

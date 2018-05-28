@@ -1,69 +1,149 @@
+# Created by Josh Wright 5/23/18
+# Implemented by Josh Wright 5/23/18 - Basic Functionality
+# Implemented by Bin Chen 5/24/18 - the method replace_cards
+# Edited by Houyi Fan 5/24/18 - Add "attr_accessor" for instance variables to help test the methods in this class, Fix a bug in setLeftInDealersHand
+# Edited by Houyi Fan 5/26/18 - Complete comments
+
 require_relative "deck"
 require_relative "card"
 require_relative "player"
-#Created by Josh Wright 5/23/18
-#Implemented by Josh Wright 5/23/18 - Basic Functionality
-# Bin Chen implemented the method replace_cards
 
+# Game class contains all operations and rules for the game
 class Game
+  attr_accessor :listOfPlayers, :deck, :dealersHand, :hasEnded, :winner # add getter and setter methods to help test the methods in this class
+
   #    ----    Constructor method for Game class.    ----    #
 
   # @author Josh Wright
   # @requires
   #   |listOfPlayers| > 0
+  # @param
+  #   listOfPlayers - a list that contains all players in the game
   #
+  # deck is the Deck used in the game. It has all cards that are not in dealersHand and winningsHand
+  # dealersHand is the dealers hand list. It contains cards that are providing to players to judge currently. Initially it will have 12 cards
+  # hasEned indicates if the game has ended
+  # winner indicates who is the winner of the game
+  # Constructor will push 12 cards from deck to dealers hand initially to start the game
   def initialize(listOfPlayers)
-
     @listOfPlayers = listOfPlayers
     @deck = Deck.new
     @dealersHand = []
     @hasEnded = false
     @winner = nil
-
     12.times {@dealersHand.push(@deck.remove!)}
   end
 
   #    ----    Kernel Methods    ----    #
 
-  #finds the winner with the highest score
-  #requires @hasEnded = true
-  def getWinner
+  # finds the winner with the highest score
+  # requires @hasEnded = true
+  def setWinner
     maxScorePlayer = @listOfPlayers[0]
-    for i in 1...(@listOfPlayers.length())
-      maxScorePlayer = @listOfPlayers[i] if maxScorePlayer.score < listOfPlayers[i]
+    for player in @listOfPlayers
+      maxScorePlayer = player if maxScorePlayer.score < player.score
     end
+    return maxScorePlayer
   end
 
+  # returns the game winner
+  def winner
+    @winner
+  end
+
+  # returns the player list
+  def listOfPlayers
+    @listOfPlayers
+  end
+
+  # resets the dealers hand list by moving current cards in it back to deck and retrieving cards from deck again
+  def resetHand
+    while @dealersHand.length > 0
+      @deck.add! @dealersHand.pop
+    end
+    self.replenishHand!
+  end
+
+  # returns the current list in dealers hand
   def getDealersHand
     @dealersHand
   end
 
+  # puts all cards in the dealers hand list on the console
+  def display_cards
+    @dealersHand.length.times {|i| puts "Card ##{i}: " + @dealersHand[i].toString}
+  end
+
+  # puts a hint on the console
+  def displayHint
+    puts "Two cards of a set in the hand: #{self.getHint}"
+  end
+
+  # returns a boolean value by checking if there is still a set in the dealers hand list
   def setLeftInDealersHand?
     setLeft = false
     for card1 in @dealersHand
       for card2 in @dealersHand
-        for card3 in @dealersHand.length
+        for card3 in @dealersHand
               setLeft = setLeft || isSet?([card1,card2,card3]) if card1 != card2 && card2 != card3 && card1 != card3
         end
       end
     end
+    return setLeft
   end
 
-  def hasEnded?
-    if @deck.size == 0 && (@dealersHand.length == 0 || !setLeftInDealersHand?(@dealersHand))
-      @hasEnded = true
-      @winner = getWinner
+  # Returns the index of a card by doing a linear search in dealers hand list, and returns nil if we cannot find this card
+  #@param
+  #   card - the card we want to find
+  def indexOfCard (card)
+    for i in 0...@dealersHand.length
+      if card == dealersHand[i]
+        return i
+      end
     end
   end
 
+  # setting the hasEnded as true and determining the winner if there is no card remaining in deck and no set in dealers hand
+  def hasEnded?
+    if @deck.size == 0 && (@dealersHand.length == 0 || !setLeftInDealersHand?)
+      @hasEnded = true
+      @winner = setWinner
+    end
+  end
+
+  # puts a hint that contains two card in a set on the console, which lets the player only need find the third card.
+  # And puts a message on the console when there is no set in the deck
+  def getHint
+    for card1 in @dealersHand
+      for card2 in @dealersHand
+        for card3 in @dealersHand
+          if card1 != card2 && card2 != card3 && card1 != card3 && isSet?([card1,card2,card3])
+            return  puts "\nCard ##{self.indexOfCard card1}: " + card1.toString + "\nCard ##{self.indexOfCard card2}: " + card2.toString #+ "\nCard ##{self.indexOfCard card3}: " + card3.toString
+          end
+      end
+    end
+    end
+    puts "No Set Available"
+  end
+
+  # replaces the dealers hand list by removing cards from deck to it. When there is no card in deck, just delete cards in the dealers hand list
+  # @param
+  #   cards_index - the index of cards that the player chooses
   def replace_cards(cards_index)
-    cards_index.each {|index| @dealersHand[index] = @deck.remove!}
+    #cards_index.each {|index|  @dealersHand[index] = @deck.remove!}
+    for i in cards_index
+       if @deck.size > 0
+          @dealersHand[i] = @deck.remove!
+       else
+          @dealersHand.delete_at i
+       end
+    end
   end
 
   #replenishes the dealers hand each time a player finds a set
   # @updates dealersHand
   def replenishHand!
-    while @dealersHand.length < 12
+    while @dealersHand.length < 12 && @deck.size > 0
       @dealersHand.push(@deck.remove!)
     end
   end
@@ -80,27 +160,27 @@ class Game
   # @requires card1 != card2 != card3
   # @returns true if all 3 cards have same color or 3 different colors and false otherwise
   def setColor?(card1,card2,card3)
-    (card1.color == card2.color && card2.color == card3.color) || (card1.color != card2.color && card2.color != card3.color)
+    (card1.color == card2.color && card2.color == card3.color && card1.color == card3.color) || (card1.color != card2.color && card2.color != card3.color && card1.color != card3.color)
   end
 
   #Determines if 3 cards have the same symbol or 3 different symbols
   # @requires card1 != card2 != card3
   # @returns true if all 3 cards have same symbol or 3 different symbols and false otherwise
   def setSymbol?(card1,card2,card3)
-    card1.symbol == card2.symbol && card2.symbol == card3.symbol || (card1.symbol != card2.symbol && card2.symbol != card3.symbol)
+    card1.symbol == card2.symbol && card2.symbol == card3.symbol && card1.symbol == card3.symbol  || (card1.symbol != card2.symbol && card2.symbol != card3.symbol && card1.symbol != card3.symbol)
   end
 
   #Determines if 3 cards have the same shading or 3 different shadings
   # @requires card1 != card2 != card3
   # @returns true if all 3 cards have same shading or 3 different shadings and false otherwise
   def setShading?(card1,card2,card3)
-    card1.shading == card2.shading && card2.shading == card3.shading || (card1.shading != card2.shading && card2.shading != card3.shading)
+    card1.shading == card2.shading && card2.shading == card3.shading && card1.shading == card3.shading || (card1.shading != card2.shading && card2.shading != card3.shading && card1.shading != card3.shading)
   end
   #Determines if 3 cards have the same number or 3 different numbers
   # @requires card1 != card2 != card3
   # @returns true if all 3 cards have same number or 3 different numbers and false otherwise
   def setNumber?(card1,card2,card3)
-    card1.number == card2.number && card2.number == card3.number || (card1.number != card2.number && card2.number != card3.number)
+    card1.number == card2.number && card2.number == card3.number && card1.number == card3.number || (card1.number != card2.number && card2.number != card3.number && card1.number != card3.number)
   end
 
 end

@@ -5,9 +5,7 @@
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$" />
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="RVM: ruby-2.3.3" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="power_assert (v0.4.1, ruby-2.4.4-p296) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="test-unit (v3.2.3, ruby-2.4.4-p296) [gem]" level="application" />
   </component>
 </module>
