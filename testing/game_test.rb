@@ -2,11 +2,77 @@
 # Implemented by Josh Wright 5/23/18 - Test Plan for isSet
 # Implemented by Houyi Fan 5/24/18 - Test Plan for other methods except isSet. Add documentation for each test case.
 # Edited by Houyi Fan 5/27/18 - Fix a wrong test case
+# Edited by Jeb Alawi 5/28/18 - Added test cases
 
 require_relative "../game"
 require 'test/unit'
 
-class Game_test < Test::Unit::TestCase
+class GameTest < Test::Unit::TestCase
+
+  # Written by: Jeb Alawi
+  # setWinner
+  def test_setWinner
+    bob = Player.new("Bob")
+    ross = Player.new("Ross")
+    game = Game.new([bob, ross])
+    card1 = Card.new(1,1,1,1)
+    hand1 = [card1, card1, card1]
+    bob.addWinningHand(hand1)
+    winner = game.setWinner
+    assert_equal("Bob", winner.name)
+  end
+
+  # winner
+
+  # Written by: Jeb Alawi
+  # listOfPlayers
+  def test_listOfPlayers
+    bob = Player.new("Bob")
+    ross = Player.new("Ross")
+    game = Game.new([bob, ross])
+    playerList= game.listOfPlayers
+    assert_equal(2,playerList.length)
+  end
+
+  # Written by: Jeb Alawi
+  # resetHand
+  def test_resetHand
+    bob = Player.new("Bob")
+    ross = Player.new("Ross")
+    game = Game.new([bob, ross])
+    game.replenishHand!
+    #check that no card is the same in dealers hand
+  end
+
+  # display_cards??
+
+
+  # displayHint??
+
+
+  # indexOfCard
+
+
+  # hasEnded
+
+
+  # getHint??
+
+
+  # replace_cards
+
+
+  # Written by: Jeb Alawi
+  # replenishHand
+  def test_replenishHand
+    bob = Player.new("Bob")
+    ross = Player.new("Ross")
+    game = Game.new([bob, ross])
+    assert_equal(12,game.getDealersHand.length)
+    game.replenishHand!
+    assert_equal(12,game.getDealersHand.length)
+    #check that no card is the same in dealers hand
+  end
 
   # test for constructor with no player
   def test_constructor_empty
