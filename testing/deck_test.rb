@@ -3,7 +3,7 @@
 # Edited by Houyi Fan 5/27/18 - Complete comments
 
 require 'test/unit'
-require_relative '../deck'
+require_relative '../Model/deck'
 
 class MyTest < Test::Unit::TestCase
 

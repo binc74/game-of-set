@@ -2,7 +2,7 @@
 # Implemented by Josh Wright
 # Edited by Houyi Fan 5/27/2018 - Complete comments
 
-require_relative '../card'
+require_relative '../Model/card'
 require 'test/unit'
 
 class CardTest < Test::Unit::TestCase

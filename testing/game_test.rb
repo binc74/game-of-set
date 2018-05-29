@@ -3,7 +3,7 @@
 # Implemented by Houyi Fan 5/24/18 - Test Plan for other methods except isSet. Add documentation for each test case.
 # Edited by Houyi Fan 5/27/18 - Fix a wrong test case
 
-require_relative "../game"
+require_relative "../Model/game"
 require 'test/unit'
 
 class Game_test < Test::Unit::TestCase

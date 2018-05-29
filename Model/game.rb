@@ -3,6 +3,7 @@
 # Implemented by Bin Chen 5/24/18 - the method replace_cards
 # Edited by Houyi Fan 5/24/18 - Add "attr_accessor" for instance variables to help test the methods in this class, Fix a bug in setLeftInDealersHand
 # Edited by Houyi Fan 5/26/18 - Complete comments
+# Edited by Bin Chen 5/29/18 - Change the constructor of this class, added get_card and update_player method
 
 require_relative "deck"
 require_relative "card"
@@ -26,12 +27,15 @@ class Game
   # winner indicates who is the winner of the game
   # Constructor will push 12 cards from deck to dealers hand initially to start the game
   def initialize(listOfPlayers)
-    @listOfPlayers = listOfPlayers
+    @listOfPlayers = playerNames.map.with_index { |name, index| Player.new name, index }
     @deck = Deck.new
     @dealersHand = []
     @hasEnded = false
     @winner = nil
-    12.times {@dealersHand.push(@deck.remove!)}
+    12.times { |pos| @dealersHand << get_card(@deck.remove!, pos)}
+    @currentPlayer = 0
+    @cardChosen = Set[]
+    @time = 0
   end
 
   #    ----    Kernel Methods    ----    #
@@ -183,5 +187,24 @@ class Game
     card1.number == card2.number && card2.number == card3.number && card1.number == card3.number || (card1.number != card2.number && card2.number != card3.number && card1.number != card3.number)
   end
 
+  def checkSet?(b1, b2, b3)
+    b1 == b2 && b2 == b3 || (b1 != b2 && b2 != b3)
+  end
+
+  # get the card object
+  def get_card(content, position)
+    Card.new *content,
+             Area.new(CARD_START_X + (position % CARD_EACH_ROW) * (CARD_SIZE_X + CARD_INDENT_X),
+                      CARD_START_Y + (position / CARD_EACH_ROW) * (CARD_SIZE_Y + CARD_INDENT_Y), CARD_SIZE_X, CARD_SIZE_Y)
+  end
+
+  # update the @currentPlayer using the player
+  def update_player!(player)
+    if @currentPlayer != player.number
+      print "Player changed from " + @listOfPlayers[@currentPlayer].name
+      @currentPlayer = player.number
+      puts " to " + player.name
+    end
+  end
 end
 
