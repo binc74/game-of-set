@@ -43,6 +43,7 @@ class View
             text_color = @game.cardChosen === i ? Gosu::Color::RED : Gosu::Color::BLACK
             card = @game.dealersHand[i]
 
+            Gosu.draw_rect card.area.x, card.area.y, card.area.width, card.area.height, Gosu::Color::WHITE
             # Write the Color of the card
             @font.draw "#{card.colorStr}", card.area.x + CARD_TEXT_INDENT_X, card.area.y + 1 * CARD_TEXT_INDENT_Y, 0, 1.0, 1.0, text_color
 
@@ -65,6 +66,6 @@ class View
     def draw
         draw_players
         draw_cards
-        @font.draw "Time: #{@game.time}", 600, 100, 0, 1.0, 1.0, Gosu::Color::RED
+        #@font.draw "Time: #{@game.time}", 600, 100, 0, 1.0, 1.0, Gosu::Color::RED
     end
 end

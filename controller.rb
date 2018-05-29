@@ -25,7 +25,7 @@ class Controller
         }
         @game.listOfPlayers.each { |player|
             if is_in_area? x, y, player.area
-                @game.update_player player
+                @game.update_player! player
             end
         }
     end

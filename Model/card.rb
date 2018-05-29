@@ -10,21 +10,22 @@ class Card
   attr_reader :color, :symbol, :shading, :number, :area
 
   # class variables that describes the possible attributes a single card can have
-  @Colors = %w{red green purple}
-  @Symbols = %w{diamond squiggle oval}
-  @Shadings = %w{open dashed solid}
-  @Numbers = %w{1 2 3}
+  @@Colors = %w(red green purple)
+  @@Symbols = %w(diamond squiggle oval)
+  @@Shadings = %w(open dashed solid)
+  @@Numbers = %w(1 2 3)
 
   #Constructor method for Card class
   # color must be {(1)red,(2)green, or (3)purple} - pick one
   # symbol must be {(1)diamond, (2)squiggle, or (3)oval} - pick one
   # shading must be {(1)open,(2)dashed, or (3)solid} - pick one
   # number must be {1,2,or 3} - pick one
-  def initialize (color, symbol, shading, number)
+  def initialize (color, symbol, shading, number, area)
     @color = color
     @symbol = symbol
     @shading = shading
     @number = number
+    @area = area
   end
 
   # getters that returns the word version of the attributes of card
@@ -35,7 +36,7 @@ class Card
 
   # returns the string representation of the card
   def toString
-    return  "[" + @Colors[@color-1] + "," + @Symbols[@symbol-1] + "," + @Shadings[@shading-1] + "," + @Numbers[@number -1] + "]"
+    return  "[" + @@Colors[@color-1] + "," + @@Symbols[@symbol-1] + "," + @@Shadings[@shading-1] + "," + @@Numbers[@number -1] + "]"
   end
 
 end

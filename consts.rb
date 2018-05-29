@@ -2,7 +2,6 @@
 # Bin Chen added the const for player graphics and card graphics in 5/29
 
 # this module stores all the constants that needed for this project
-module Consts
     # Constants for player graphics
     PLAYER_AREA_X_START = 15
     PLAYER_AREA_X_INDENT = 15
@@ -22,4 +21,3 @@ module Consts
     CARD_SIZE_Y = 110
     CARD_TEXT_INDENT_X = 30
     CARD_TEXT_INDENT_Y = 20
-end

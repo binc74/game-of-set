@@ -4,6 +4,9 @@
 # Edited by Bin Chen 5/29/18 - Change the constructor and adding getter and setter methods
 require 'set'
 
+require_relative 'area'
+require_relative '../consts'
+
 # Player class contains the information about the player
 class Player
 
@@ -11,7 +14,7 @@ class Player
   #Constructor for Player class
   # name is the name of the player
   # WinningsHand contains the cards that have been identified as a part of set by the player successfully. And the number of cards in it will be the score of this player.
-  def initialize (name)
+  def initialize (name, number)
     @name = name
     @number = number
     @area = Area.new PLAYER_AREA_X_START + number * (PLAYER_AREA_X_INDENT + PLAYER_AREA_SIZE_X), PLAYER_AREA_START_Y,
@@ -22,13 +25,13 @@ class Player
   # returns player score
   # score = number of winning hands
   def score
-    @WinningHands.length
+    @winningHands.length
   end
 
   # requires hand is a set of 3 Card objects
   # adds hand to winning hands
   def addWinningHand(hand)
-    @WinningHands.add(hand)
+    @winningHands.add(hand)
   end
 
 end

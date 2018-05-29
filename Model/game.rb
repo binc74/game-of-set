@@ -8,10 +8,11 @@
 require_relative "deck"
 require_relative "card"
 require_relative "player"
+require_relative "area"
 
 # Game class contains all operations and rules for the game
 class Game
-  attr_accessor :listOfPlayers, :deck, :dealersHand, :hasEnded, :winner # add getter and setter methods to help test the methods in this class
+  attr_accessor :listOfPlayers, :deck, :dealersHand, :hasEnded, :winner, :currentPlayer, :cardChosen # add getter and setter methods to help test the methods in this class
 
   #    ----    Constructor method for Game class.    ----    #
 
@@ -26,7 +27,7 @@ class Game
   # hasEned indicates if the game has ended
   # winner indicates who is the winner of the game
   # Constructor will push 12 cards from deck to dealers hand initially to start the game
-  def initialize(listOfPlayers)
+  def initialize(playerNames)
     @listOfPlayers = playerNames.map.with_index { |name, index| Player.new name, index }
     @deck = Deck.new
     @dealersHand = []
@@ -35,7 +36,6 @@ class Game
     12.times { |pos| @dealersHand << get_card(@deck.remove!, pos)}
     @currentPlayer = 0
     @cardChosen = Set[]
-    @time = 0
   end
 
   #    ----    Kernel Methods    ----    #
@@ -53,11 +53,6 @@ class Game
   # returns the game winner
   def winner
     @winner
-  end
-
-  # returns the player list
-  def listOfPlayers
-    @listOfPlayers
   end
 
   # resets the dealers hand list by moving current cards in it back to deck and retrieving cards from deck again
@@ -201,7 +196,7 @@ class Game
   # update the @currentPlayer using the player
   def update_player!(player)
     if @currentPlayer != player.number
-      print "Player changed from " + @listOfPlayers[@currentPlayer].name
+      print "Player switched from " + @listOfPlayers[@currentPlayer].name
       @currentPlayer = player.number
       puts " to " + player.name
     end
