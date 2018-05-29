@@ -12,6 +12,8 @@ require_relative "consts"
 
 # the view class is used to draw the graphics on the screen
 class View
+    include Consts
+
     def initialize(game)
         @game = game
         @font = Gosu::Font.new(20)  # the font size

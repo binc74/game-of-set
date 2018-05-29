@@ -9,9 +9,12 @@ require_relative "deck"
 require_relative "card"
 require_relative "player"
 require_relative "area"
+require_relative "../consts"
 
 # Game class contains all operations and rules for the game
 class Game
+  include Consts
+
   attr_accessor :listOfPlayers, :deck, :dealersHand, :hasEnded, :winner, :currentPlayer, :cardChosen # add getter and setter methods to help test the methods in this class
 
   #    ----    Constructor method for Game class.    ----    #
