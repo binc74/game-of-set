@@ -34,15 +34,20 @@ class Controller
         @game.player_list.each { |player|
             @game.update_player! player if is_in_area? x, y, player.area
         }
-        ans_area = Area.new ANS_BOX_X, ANS_BOX_Y,
-                            ANS_BOX_WIDTH, ANS_BOX_HEIGHT
-        if is_in_area? x, y, ans_area
-            @game.get_ans
-        end
-        restart_button_area = Area.new RESTART_BUTTON_START_X, RESTART_BUTTON_START_Y, BUTTON_SIZE_X, BUTTON_SIZE_Y
+        # ans_area = Area.new ANS_BOX_X, ANS_BOX_Y,
+        #                     ANS_BOX_WIDTH, ANS_BOX_HEIGHT
+        # if is_in_area? x, y, ans_area
+        #     @game.get_ans
+        # end
+        restart_button_area = Area.new RESTART_BUTTON_START_X, RESTART_BUTTON_START_Y, RESTART_BUTTON_SIZE_X, RESTART_BUTTON_SIZE_Y
         if is_in_area? x, y, restart_button_area
             @game.restart
             @game.player_list.each {|player| player.restart}
+        end
+
+        hint_button_area = Area.new HINT_BUTTON_START_X, HINT_BUTTON_START_Y, HINT_BUTTON_SIZE_X, HINT_BUTTON_SIZE_Y
+        if is_in_area? x, y, hint_button_area
+          @game.get_ans
         end
     end
 

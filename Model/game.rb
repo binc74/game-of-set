@@ -259,6 +259,7 @@ class Game
         @winner = nil
         shuffle
         num_set = get_set_num_dealers_hand
+        # puts @difficulty
         until @difficulty.include? num_set
             shuffle
             num_set = get_set_num_dealers_hand

@@ -49,12 +49,14 @@ module Constants
     # Constants for Restart button
     RESTART_BUTTON_START_X = 650
     RESTART_BUTTON_START_Y = 440
-    BUTTON_SIZE_X = 180
-    BUTTON_SIZE_Y = 35
+    RESTART_BUTTON_SIZE_X = 180
+    RESTART_BUTTON_SIZE_Y = 35
     # BUTTON_INDENT_X = 0
     # BUTTON_INDENT_Y = 50
-    # SHUFFLE_BUTTON_START_X = 650
-    # SHUFFLE_BUTTON_START_Y = 525
+    HINT_BUTTON_START_X = 650
+    HINT_BUTTON_START_Y = 525
+    HINT_BUTTON_SIZE_X = 80
+    HINT_BUTTON_SIZE_Y = 35
 
     # Constant ranges for difficulty for game
     DIFFICULTY = [29..42, 15..28, 0..14]

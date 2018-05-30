@@ -87,8 +87,8 @@ class View
       text_color = Gosu::Color::AQUA
       # draw a "new game" button
       @font_for_menu.draw "Restart", RESTART_BUTTON_START_X, RESTART_BUTTON_START_Y, 0, 1, 1, text_color
-      # draw a "shuffle" button
-      # @font_for_menu.draw "Shuffle", SHUFFLE_BUTTON_START_X, SHUFFLE_BUTTON_START_Y , 0, 1, 1, text_color
+      # draw a "hint" button
+      @font_for_menu.draw "Hint", HINT_BUTTON_START_X, HINT_BUTTON_START_Y , 0, 1, 1, text_color
 
     end
 
@@ -96,7 +96,7 @@ class View
     def draw
         draw_players
         draw_cards
-        draw_ans
+        # draw_ans
         draw_timer
         draw_menu
         draw_last_set
