@@ -54,17 +54,24 @@ class View
 
             # Add corresponding image to each card
             image = Gosu::Image.new("Images/" + card.color_str + "_" + card.symbol_str + "_" + card.shading_str + "_" + card.number_str + ".PNG")
-            color = Gosu::Color.argb(0xff_ffffff) # make the color of vertices in image become white. In other words, making the image not in shadow
+            color = @game.card_chosen.include?(i) ? Gosu::Color.argb(0xff_ffffff) : Gosu::Color.argb(0xaa_faffff) # make the color of vertices in image become white. In other words, making the image not in shadow
             image.draw_as_quad card.area.x, card.area.y, color, card.area.x + card.area.width, card.area.y, color, card.area.x, card.area.y + card.area.height, color, card.area.x + card.area.width, card.area.y + card.area.height, color, 0
 
         }
     end
 
 
+    def draw_hint
+        Gosu.draw_rect 550, 150, 150, 70, Gosu::Color::WHITE
+        @font.draw "HINT?", 600,
+                   175, 0, 1.0, 1.0, Gosu::Color::BLACK
+    end
+
     # draw on the screen
     def draw
         draw_players
         draw_cards
+        draw_hint
         #@font.draw "Time: #{@game.time}", 600, 100, 0, 1.0, 1.0, Gosu::Color::RED
     end
 end

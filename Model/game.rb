@@ -111,7 +111,7 @@ class Game
             for card2 in @dealers_hand
                 for card3 in @dealers_hand
                     if card1 != card2 && card2 != card3 && card1 != card3 && is_set?([card1, card2, card3])
-                        puts "\nCard ##{self.index_of_card card1}: " + card1.to_string + "\nCard ##{self.index_of_card card2}: " + card2.to_string #+ "\nCard ##{self.indexOfCard card3}: " + card3.toString
+                        puts "\nCard ##{self.index_of_card card1}: " + card1.to_string + "\nCard ##{self.index_of_card card2}: " + card2.to_string + "\nCard ##{self.index_of_card card3}: " + card3.to_string
                     end
                 end
             end
@@ -196,5 +196,44 @@ class Game
             puts " to " + player.name
         end
     end
+
+    def update_set!(i)
+        if @card_chosen.include?(i)
+            @card_chosen.delete(i)
+        elsif @card_chosen.size < 3
+            @card_chosen.add(i)
+        end
+        if @card_chosen.length == 3
+            sleep(0.25)
+            submit_set @card_chosen
+        end
+    end
+
+
+    def clear_set
+        @card_chosen = Set[]
+    end
+
+
+    def submit_set cardSetIndex
+        cardSetArr = cardSetIndex.to_a
+        cardSetArr = [@dealers_hand[cardSetArr[0]],@dealers_hand[cardSetArr[1]],@dealers_hand[cardSetArr[2]]]
+        cardSet = Set[]
+        cardSet.add cardSetArr[0]
+        cardSet.add cardSetArr[1]
+        cardSet.add cardSetArr[2]
+        if is_set? cardSetArr
+            print "This is a Set\n"
+            player_list[current_player].add_winning_hand cardSet
+            print player_list[current_player].score
+            clear_set
+            replace_cards(cardSetIndex.to_a)
+        else
+            print "This is not a Set\n"
+            clear_set
+        end
+    end
+
 end
+
 

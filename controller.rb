@@ -22,12 +22,19 @@ class Controller
 
     # Detect the position of the mouse and process input
     def mouse_detection(x, y)
-        @game.dealers_hand.each { |card|
-
+        @game.dealers_hand.each_index { |i|
+            if is_in_area? x, y, @game.dealers_hand[i].area
+                @game.update_set! i
+            end
         }
         @game.player_list.each { |player|
             @game.update_player! player if is_in_area? x, y, player.area
         }
+        hint_area = Area.new 550, 150,
+                            150, 70
+        if is_in_area? x, y, hint_area
+            @game.get_hint
+        end
     end
 
     # update the model of game according to user's input
