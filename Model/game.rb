@@ -111,7 +111,7 @@ class Game
             for card2 in @dealers_hand
                 for card3 in @dealers_hand
                     if card1 != card2 && card2 != card3 && card1 != card3 && is_set?([card1, card2, card3])
-                        puts "\nCard ##{self.index_of_card card1}: " + card1.to_string + "\nCard ##{self.index_of_card card2}: " + card2.to_string + "\nCard ##{self.index_of_card card3}: " + card3.to_string
+                        return puts "\nCard ##{self.index_of_card card1}: " + card1.to_string + "\nCard ##{self.index_of_card card2}: " + card2.to_string + "\nCard ##{self.index_of_card card3}: " + card3.to_string
                     end
                 end
             end
