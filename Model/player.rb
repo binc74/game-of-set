@@ -12,6 +12,7 @@ class Player
     include Constants
 
     attr_reader :name, :number, :area
+    attr_accessor :log
     #Constructor for Player class
     # name is the name of the player
     # WinningsHand contains the cards that have been identified as a part of set by the player successfully. And the number of cards in it will be the score of this player.
@@ -20,7 +21,8 @@ class Player
         @number = number
         @area = Area.new PLAYER_AREA_X_START + number * (PLAYER_AREA_X_INDENT + PLAYER_AREA_SIZE_X), PLAYER_AREA_START_Y,
                          PLAYER_AREA_SIZE_X, PLAYER_AREA_SIZE_Y
-        @winning_hands = Set[]
+        @winning_hands = []
+        @log = []
     end
 
     # returns player score
@@ -32,7 +34,11 @@ class Player
     # requires hand is a set of 3 Card objects
     # adds hand to winning hands
     def add_winning_hand(hand)
-        @winning_hands.add(hand)
+        @winning_hands.push(hand)
+    end
+
+    def add_to_log
+
     end
 
 end

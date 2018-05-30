@@ -15,7 +15,7 @@ require_relative "../constants"
 class Game
     include Constants
 
-    attr_accessor :player_list, :deck, :dealers_hand, :has_ended, :winner, :current_player, :card_chosen, :time # add getter and setter methods to help test the methods in this class
+    attr_accessor :last_set, :player_list, :deck, :dealers_hand, :has_ended, :winner, :current_player, :card_chosen, :time # add getter and setter methods to help test the methods in this class
 
     #    ----    Constructor method for Game class.    ----    #
 
@@ -40,6 +40,7 @@ class Game
         @current_player = 0
         @card_chosen = Set[]
         @time = Time.now
+        @last_set = []
     end
 
     #    ----    Kernel Methods    ----    #
@@ -211,27 +212,33 @@ class Game
     end
 
 
-    def clear_set
-        @card_chosen = Set[]
-    end
 
-
-    def submit_set cardSetIndex
-        cardSetArr = cardSetIndex.to_a
-        cardSetArr = [@dealers_hand[cardSetArr[0]],@dealers_hand[cardSetArr[1]],@dealers_hand[cardSetArr[2]]]
-        cardSet = Set[]
-        cardSet.add cardSetArr[0]
-        cardSet.add cardSetArr[1]
-        cardSet.add cardSetArr[2]
-        if is_set? cardSetArr
+    def submit_set card_set_index
+        card_set_arr = card_set_index.to_a
+        card_set_arr = [@dealers_hand[card_set_arr[0]],@dealers_hand[card_set_arr[1]],@dealers_hand[card_set_arr[2]]]
+        card_set = Set[]
+        3.times {|i| card_set.add card_set_arr[i]}
+        if is_set? card_set_arr
             print "This is a Set\n"
-            player_list[current_player].add_winning_hand cardSet
-            print player_list[current_player].score
-            clear_set
-            replace_cards(cardSetIndex.to_a)
+            replace_cards(card_set_index.to_a)
+            player_list[current_player].add_winning_hand card_set
+            player_list[current_player].log.push((Time.now-time).to_i)
+
+            puts player_list[current_player].score
+            puts player_list[current_player].log[0]
+            @last_set = card_set_arr
+            last_set_0_area = Area.new LAST_SET_0_X,LAST_SET_Y, CARD_SIZE_X, CARD_SIZE_Y
+            last_set_1_area = Area.new LAST_SET_1_X,LAST_SET_Y, CARD_SIZE_X, CARD_SIZE_Y
+            last_set_2_area = Area.new LAST_SET_2_X,LAST_SET_Y, CARD_SIZE_X, CARD_SIZE_Y
+            card_set_arr[0].area = last_set_0_area
+            card_set_arr[1].area = last_set_1_area
+            card_set_arr[2].area = last_set_2_area
+            3.times{|i| @last_set[i] = card_set_arr[i]}
+            @card_chosen = Set[]
+
         else
             print "This is not a Set\n"
-            clear_set
+            @card_chosen = Set[]
         end
     end
 
@@ -243,6 +250,9 @@ class Game
         12.times {|pos| @dealers_hand << get_card(@deck.remove!, pos)}
         @current_player = 0
         @card_chosen = Set[]
+    end
+
+    def scoreboard
 
     end
 

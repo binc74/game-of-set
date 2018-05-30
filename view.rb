@@ -62,7 +62,17 @@ class View
     end
 
 
-    def draw_hint
+    def draw_last_set
+      @game.last_set.each_index { |i|
+        card = @game.last_set[i]
+        image = Gosu::Image.new("Images/" + card.color_str + "_" + card.symbol_str + "_" + card.shading_str + "_" + card.number_str + ".PNG")
+        color = Gosu::Color.argb(0xff_ffffff) # make the color of vertices in image become white. In other words, making the image not in shadow
+        image.draw_as_quad card.area.x, card.area.y, color, card.area.x + card.area.width, card.area.y, color, card.area.x, card.area.y + card.area.height, color, card.area.x + card.area.width, card.area.y + card.area.height, color, 0
+      }
+    end
+
+
+    def draw_ans
         Gosu.draw_rect ANS_BOX_X, ANS_BOX_Y, ANS_BOX_WIDTH, ANS_BOX_HEIGHT, Gosu::Color::WHITE
         @font_for_others.draw "Answer?", ANS_FONT_X,
                    ANS_FONT_Y, 0, 1.0, 1.0, Gosu::Color::BLACK
@@ -82,9 +92,10 @@ class View
     def draw
         draw_players
         draw_cards
-        draw_hint
+        draw_ans
         @font_for_others.draw "Time: #{(Time.now - @game.time).to_i}", TIME_X, TIME_Y, 0, 1.0, 1.0, Gosu::Color::RED
         draw_menu
+        draw_last_set
         #@font.draw "Time: #{@game.time}", 600, 100, 0, 1.0, 1.0, Gosu::Color::RED
     end
 end

@@ -7,7 +7,8 @@
 # Card class describes a single card which has 4 attributes (color, symbol, shading, number)
 class Card
   # the getters and setters of this class
-  attr_reader :color, :symbol, :shading, :number, :area, :index
+  attr_reader :color, :symbol, :shading, :number
+  attr_accessor :area, :index
 
   # class variables that describes the possible attributes a single card can have
   @@colors = %w(red green purple)

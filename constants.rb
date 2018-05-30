@@ -28,6 +28,11 @@ module Constants
     CARD_TEXT_INDENT_X = 30
     CARD_TEXT_INDENT_Y = 20
 
+    LAST_SET_Y = 225
+    LAST_SET_0_X = 535
+    LAST_SET_1_X = 535 + CARD_SIZE_X
+    LAST_SET_2_X = 535 + 2*CARD_SIZE_X
+
     # Constants for Answer button
     ANS_BOX_X = 550
     ANS_BOX_Y = 150
