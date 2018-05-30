@@ -5,7 +5,7 @@
 #     test_removeAll_add81
 
 require 'test/unit'
-require_relative '../deck'
+require_relative '../Model/deck'
 
 class DeckTest < Test::Unit::TestCase
 

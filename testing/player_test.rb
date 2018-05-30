@@ -2,8 +2,8 @@
 # Implemented by Jeb Alawi 5/25/18
 # Edited by Houyi Fan 5/26/18 - Complete comments and delete unused statement
 
-require_relative "../player.rb"
-require_relative "../card.rb"
+require_relative "../Model/player.rb"
+require_relative "../Model/card.rb"
 require 'test/unit'
 
 class PlayerTest < Test::Unit::TestCase

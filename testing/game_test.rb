@@ -4,7 +4,7 @@
 # Edited by Houyi Fan 5/27/18 - Fix a wrong test case
 # Edited by Jeb Alawi 5/28/18 - Added test cases
 
-require_relative "../game"
+require_relative "../Model/game"
 require 'test/unit'
 
 class GameTest < Test::Unit::TestCase
