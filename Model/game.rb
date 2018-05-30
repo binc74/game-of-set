@@ -204,7 +204,6 @@ class Game
             @card_chosen.add(i)
         end
         if @card_chosen.length == 3
-            sleep(0.25)
             submit_set @card_chosen
         end
     end
