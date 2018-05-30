@@ -92,7 +92,7 @@ class Game
     #   card - the card we want to find
     def index_of_card (card)
         @dealers_hand.length.times { |i|
-            i if card == dealers_hand[i]
+            return i if card == dealers_hand[i]
         }
     end
 
