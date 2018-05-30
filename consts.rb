@@ -6,7 +6,7 @@ module Consts
     # Constants for player graphics
     PLAYER_AREA_X_START = 15
     PLAYER_AREA_X_INDENT = 15
-    PLAYER_AREA_SIZE_X = 135
+    PLAYER_AREA_SIZE_X = 120
     PLAYER_AREA_SIZE_Y = 70
     PLAYER_AREA_START_Y = 490
     PLAYER_TEXT_INDENT_X = 10
@@ -14,9 +14,9 @@ module Consts
 
     # Constants for card graphics
     CARD_EACH_ROW = 4
-    CARD_START_X = 50
-    CARD_START_Y = 70
-    CARD_INDENT_X = 20
+    CARD_START_X = 15
+    CARD_START_Y = 50
+    CARD_INDENT_X = 35
     CARD_INDENT_Y = 30
     CARD_SIZE_X = 100
     CARD_SIZE_Y = 110

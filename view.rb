@@ -27,7 +27,7 @@ class View
             text_color = player.number == @game.currentPlayer ? Gosu::Color::RED : Gosu::Color::YELLOW
 
             # Draw the outer rectangle
-            Gosu.draw_rect player.area.x, player.area.y, player.area.width, player.area.height, Gosu::Color::GREEN
+            # Gosu.draw_rect player.area.x, player.area.y, player.area.width, player.area.height, Gosu::Color::GREEN
 
             # Write the Player Number
             @font.draw "#{player.name} (##{player.number + 1})", player.area.x + PLAYER_TEXT_INDENT_X,
@@ -36,6 +36,9 @@ class View
             # Write the Player Score
             @font.draw "SCORE: #{player.score}", player.area.x+ PLAYER_TEXT_INDENT_X,
                        player.area.y + 2 * PLAYER_TEXT_INDENT_Y, 0, 1.0, 1.0, text_color
+
+            @font.draw "(Current)", player.area.x+ PLAYER_TEXT_INDENT_X,
+                       player.area.y + 3 * PLAYER_TEXT_INDENT_Y, 0, 1.0, 1.0, text_color if player.number == @game.currentPlayer
         }
     end
 
@@ -47,7 +50,7 @@ class View
             card = @game.dealersHand[i]
 
             # Draw a white rectangular to represent the card area
-            Gosu.draw_rect card.area.x, card.area.y, card.area.width, card.area.height, Gosu::Color::WHITE
+            # Gosu.draw_rect card.area.x, card.area.y, card.area.width, card.area.height, Gosu::Color::WHITE
 
             # Add corresponding image to each card
             image = Gosu::Image.new("Images/" + card.colorStr + "_" + card.symbolStr + "_" + card.shadingStr + "_" + card.numberStr + ".PNG")
