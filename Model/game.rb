@@ -15,7 +15,7 @@ require_relative "../constants"
 class Game
     include Constants
 
-    attr_accessor :player_list, :deck, :dealers_hand, :has_ended, :winner, :current_player, :card_chosen # add getter and setter methods to help test the methods in this class
+    attr_accessor :player_list, :deck, :dealers_hand, :has_ended, :winner, :current_player, :card_chosen, :time # add getter and setter methods to help test the methods in this class
 
     #    ----    Constructor method for Game class.    ----    #
 
@@ -39,6 +39,7 @@ class Game
         12.times {|pos| @dealers_hand << get_card(@deck.remove!, pos)}
         @current_player = 0
         @card_chosen = Set[]
+        @time = Time.now
     end
 
     #    ----    Kernel Methods    ----    #
@@ -50,6 +51,7 @@ class Game
         @player_list.each {|player| max_score_player = player if max_score_player.score < player.score}
         max_score_player
     end
+
 
     # returns the game winner
     def winner
@@ -106,7 +108,7 @@ class Game
 
     # puts a hint that contains two card in a set on the console, which lets the player only need find the third card.
     # And puts a message on the console when there is no set in the deck
-    def get_hint
+    def get_ans
         for card1 in @dealers_hand
             for card2 in @dealers_hand
                 for card3 in @dealers_hand
@@ -126,7 +128,7 @@ class Game
         #cards_index.each {|index|  @dealersHand[index] = @deck.remove!}
         for i in cards_index
             if @deck.size > 0
-                @dealers_hand[i] = @deck.remove!
+                @dealers_hand[i] = Card.new *@deck.remove!, @dealers_hand[i].index, @dealers_hand[i].area
             else
                 @dealers_hand.delete_at i
             end

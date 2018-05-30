@@ -63,9 +63,9 @@ class View
 
 
     def draw_hint
-        Gosu.draw_rect 550, 150, 150, 70, Gosu::Color::WHITE
-        @font_for_others.draw "HINT?", 600,
-                   175, 0, 1.0, 1.0, Gosu::Color::BLACK
+        Gosu.draw_rect ANS_BOX_X, ANS_BOX_Y, ANS_BOX_WIDTH, ANS_BOX_HEIGHT, Gosu::Color::WHITE
+        @font_for_others.draw "Answer?", ANS_FONT_X,
+                   ANS_FONT_Y, 0, 1.0, 1.0, Gosu::Color::BLACK
     end
 
     # draw a game menu on the lower right corner of windows
@@ -83,6 +83,7 @@ class View
         draw_players
         draw_cards
         draw_hint
+        @font_for_others.draw "Time: #{(Time.now - @game.time).to_i}", TIME_X, TIME_Y, 0, 1.0, 1.0, Gosu::Color::RED
         draw_menu
         #@font.draw "Time: #{@game.time}", 600, 100, 0, 1.0, 1.0, Gosu::Color::RED
     end

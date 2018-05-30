@@ -1,5 +1,6 @@
 # Created by Bin Chen in 5/29
 # Bin Chen added the const for player graphics and card graphics in 5/29
+# Jeb Alawi added const for answer button, timer 5/30
 
 # this module stores all the constants that needed for this project
 module Constants
@@ -26,6 +27,18 @@ module Constants
     CARD_SIZE_Y = 110
     CARD_TEXT_INDENT_X = 30
     CARD_TEXT_INDENT_Y = 20
+
+    # Constants for Answer button
+    ANS_BOX_X = 550
+    ANS_BOX_Y = 150
+    ANS_BOX_WIDTH = 150
+    ANS_BOX_HEIGHT = 70
+    ANS_FONT_X = 600
+    ANS_FONT_Y = 175
+
+    # Constants for Timer
+    TIME_X = 600
+    TIME_Y = 100
 
     # Constants for menu graphics
     RESTART_BUTTON_START_X = 650
