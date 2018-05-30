@@ -233,6 +233,17 @@ class Game
         end
     end
 
+    def restart
+        @deck = Deck.new
+        @dealers_hand = []
+        @has_ended = false
+        @winner = nil
+        12.times {|pos| @dealers_hand << get_card(@deck.remove!, pos)}
+        @current_player = 0
+        @card_chosen = Set[]
+
+    end
+
 end
 
 

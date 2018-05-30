@@ -17,7 +17,8 @@ class View
 
     def initialize(game)
         @game = game
-        @font = Gosu::Font.new(20)  # the font size
+        @font_for_menu = Gosu::Font.new(40)    # the font size for menu
+        @font_for_others = Gosu::Font.new(20)  # the font size for player and hint
     end
 
 
@@ -30,14 +31,14 @@ class View
             # Gosu.draw_rect player.area.x, player.area.y, player.area.width, player.area.height, Gosu::Color::GREEN
 
             # Write the Player Number
-            @font.draw "#{player.name} (##{player.number + 1})", player.area.x + PLAYER_TEXT_INDENT_X,
+            @font_for_others.draw "#{player.name} (##{player.number + 1})", player.area.x + PLAYER_TEXT_INDENT_X,
                        player.area.y + PLAYER_TEXT_INDENT_Y, 0, 1.0, 1.0, text_color
 
             # Write the Player Score
-            @font.draw "SCORE: #{player.score}", player.area.x+ PLAYER_TEXT_INDENT_X,
+            @font_for_others.draw "SCORE: #{player.score}", player.area.x+ PLAYER_TEXT_INDENT_X,
                        player.area.y + 2 * PLAYER_TEXT_INDENT_Y, 0, 1.0, 1.0, text_color
 
-            @font.draw "(Current)", player.area.x+ PLAYER_TEXT_INDENT_X,
+            @font_for_others.draw "(Current)", player.area.x+ PLAYER_TEXT_INDENT_X,
                        player.area.y + 3 * PLAYER_TEXT_INDENT_Y, 0, 1.0, 1.0, text_color if player.number == @game.current_player
         }
     end
@@ -63,8 +64,18 @@ class View
 
     def draw_hint
         Gosu.draw_rect 550, 150, 150, 70, Gosu::Color::WHITE
-        @font.draw "HINT?", 600,
+        @font_for_others.draw "HINT?", 600,
                    175, 0, 1.0, 1.0, Gosu::Color::BLACK
+    end
+
+    # draw a game menu on the lower right corner of windows
+    def draw_menu
+      text_color = Gosu::Color::AQUA
+      # draw a "new game" button
+      @font_for_menu.draw "Restart", RESTART_BUTTON_START_X, RESTART_BUTTON_START_Y, 0, 1, 1, text_color
+      # draw a "shuffle" button
+      @font_for_menu.draw "Shuffle", SHUFFLE_BUTTON_START_X, SHUFFLE_BUTTON_START_Y , 0, 1, 1, text_color
+
     end
 
     # draw on the screen
@@ -72,6 +83,7 @@ class View
         draw_players
         draw_cards
         draw_hint
+        draw_menu
         #@font.draw "Time: #{@game.time}", 600, 100, 0, 1.0, 1.0, Gosu::Color::RED
     end
 end

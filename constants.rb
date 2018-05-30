@@ -26,4 +26,15 @@ module Constants
     CARD_SIZE_Y = 110
     CARD_TEXT_INDENT_X = 30
     CARD_TEXT_INDENT_Y = 20
+
+    # Constants for menu graphics
+    RESTART_BUTTON_START_X = 650
+    RESTART_BUTTON_START_Y = 440
+    BUTTON_SIZE_X = 180
+    BUTTON_SIZE_Y = 35
+    # BUTTON_INDENT_X = 0
+    # BUTTON_INDENT_Y = 50
+    SHUFFLE_BUTTON_START_X = 650
+    SHUFFLE_BUTTON_START_Y = 525
+
 end

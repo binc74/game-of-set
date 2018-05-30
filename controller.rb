@@ -7,9 +7,12 @@ require 'gosu'
 require_relative 'Model/game'
 require_relative 'Model/area'
 require_relative 'Model/player'
+require_relative 'constants'
 
 # This class get the user input and process request
 class Controller
+    include Constants
+
     def initialize(game)
         @game = game
         @is_pressed = false        # to prevent from detecting the key for too many times
@@ -34,6 +37,11 @@ class Controller
                             150, 70
         if is_in_area? x, y, hint_area
             @game.get_hint
+        end
+
+        restart_button_area = Area.new RESTART_BUTTON_START_X, RESTART_BUTTON_START_Y, BUTTON_SIZE_X, BUTTON_SIZE_Y
+        if is_in_area? x, y, restart_button_area
+            @game.restart
         end
     end
 
