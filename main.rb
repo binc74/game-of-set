@@ -13,7 +13,7 @@ require_relative "constants"
 
 class SetGame < Gosu::Window
     include Constants
-
+    attr_reader :game
     def initialize
         # gets the player list
 
@@ -54,7 +54,20 @@ class SetGame < Gosu::Window
         @background_image.draw 0, 0, 0  # draw the background first
         @view.draw # draw the game to the screen
     end
+
+    def print_stat i
+        puts "Player: " + @game.player_list[i].name
+            @game.player_list[i].winning_hands.map.with_index {|k, j|
+                puts "Time: " + @game.player_list[i].log[j].to_s
+                puts k[0].to_string
+                puts k[1].to_string
+                puts k[2].to_string+"\n"
+            }
+    end
 end
 
-SetGame.new.show
-puts "Game Ended!!!"
+game1 = SetGame.new
+game1.show
+puts "Game Ended!!!\n"
+
+game1.game.player_list.each_index {|player| game1.print_stat(player)}

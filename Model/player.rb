@@ -11,7 +11,7 @@ require_relative '../constants'
 class Player
     include Constants
 
-    attr_reader :name, :number, :area
+    attr_reader :name, :number, :area, :winning_hands
     attr_accessor :log
     #Constructor for Player class
     # name is the name of the player

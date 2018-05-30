@@ -221,11 +221,11 @@ class Game
         if is_set? card_set_arr
             print "This is a Set\n"
             replace_cards(card_set_index.to_a)
-            player_list[current_player].add_winning_hand card_set
+            player_list[current_player].add_winning_hand card_set_arr
             player_list[current_player].log.push((Time.now-time).to_i)
 
-            puts player_list[current_player].score
-            puts player_list[current_player].log[0]
+            #puts player_list[current_player].score
+            #puts player_list[current_player].log[0]
             @last_set = card_set_arr
             last_set_0_area = Area.new LAST_SET_0_X,LAST_SET_Y, CARD_SIZE_X, CARD_SIZE_Y
             last_set_1_area = Area.new LAST_SET_1_X,LAST_SET_Y, CARD_SIZE_X, CARD_SIZE_Y
@@ -250,6 +250,7 @@ class Game
         12.times {|pos| @dealers_hand << get_card(@deck.remove!, pos)}
         @current_player = 0
         @card_chosen = Set[]
+        @last_set = []
     end
 
     def scoreboard
