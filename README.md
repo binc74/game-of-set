@@ -1,7 +1,7 @@
 # Project 2
 ### Game of Set
 
-### Important
+### **Important*
 * In this project, the Gosu gem is used for the graphics, so this gem needs to be installed to run this program
     * For Windows, install Gosu by typing this command ```gem install gosu```
     * For Linux, here are the commands to install the Gosu gem
@@ -21,7 +21,7 @@
     ```
 
 * One of our members, Josh, have some important things to deal with so he is out of town in the second week, 
-so he might not be pushing often in the second week, however, he contributed a huge amount of work in the first week,
+so he might not be pushing often in the second week. But instead, he contributed a huge amount of work in the first week,
 so I think the work balance is fine
 
 ### Roles
@@ -33,3 +33,11 @@ so I think the work balance is fine
 ### Contributions
 Please list who did what for each part of the project.
 Also list if people worked together (pair programmed) on a particular section.
+
+Bin Chen:
+
+Josh Wright:
+
+Jeb Alawi:
+
+Houyi Fan:
