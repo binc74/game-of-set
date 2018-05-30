@@ -20,6 +20,7 @@ class Card
   # symbol must be {(1)diamond, (2)squiggle, or (3)oval} - pick one
   # shading must be {(1)open,(2)dashed, or (3)solid} - pick one
   # number must be {1,2,or 3} - pick one
+  # area is the area of the card
   def initialize (color, symbol, shading, number, area)
     @color = color
     @symbol = symbol
