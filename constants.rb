@@ -1,6 +1,7 @@
 # Created by Bin Chen in 5/29
 # Bin Chen added the const for player graphics and card graphics in 5/29
 # Jeb Alawi added const for answer button, timer 5/30
+# Houyi Fan added const for restart button, difficulty 5/30
 
 # this module stores all the constants that needed for this project
 module Constants
@@ -45,14 +46,17 @@ module Constants
     TIME_X = 600
     TIME_Y = 100
 
-    # Constants for menu graphics
+    # Constants for Restart button
     RESTART_BUTTON_START_X = 650
     RESTART_BUTTON_START_Y = 440
     BUTTON_SIZE_X = 180
     BUTTON_SIZE_Y = 35
     # BUTTON_INDENT_X = 0
     # BUTTON_INDENT_Y = 50
-    SHUFFLE_BUTTON_START_X = 650
-    SHUFFLE_BUTTON_START_Y = 525
+    # SHUFFLE_BUTTON_START_X = 650
+    # SHUFFLE_BUTTON_START_Y = 525
+
+    # Constant ranges for difficulty for game
+    DIFFICULTY = [29..42, 15..28, 0..14]
 
 end

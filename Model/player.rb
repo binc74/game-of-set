@@ -2,6 +2,7 @@
 # Implemented by Jeb Alawi 5/23/18 - All Functionality and nearly all comments
 # Edited by Houyi Fan 5/26/18 - Complete comments and delete unused variable
 # Edited by Bin Chen 5/29/18 - Change the constructor and adding getter and setter methods
+# Edited by Houyi Fan 5/30/18 - Add the restart method
 require 'set'
 
 require_relative 'area'
@@ -39,6 +40,10 @@ class Player
 
     def add_to_log
 
+    end
+
+    def restart
+        @winning_hands = []
     end
 
 end

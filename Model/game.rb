@@ -4,6 +4,7 @@
 # Edited by Houyi Fan 5/24/18 - Add "attr_accessor" for instance variables to help test the methods in this class, Fix a bug in setLeftInDealersHand
 # Edited by Houyi Fan 5/26/18 - Complete comments
 # Edited by Bin Chen 5/29/18 - Change the constructor of this class, added get_card and update_player method
+# Edited by Houyi Fan 5/30/18 - Change the constructor and Add restart, shuffle, get_sum_dealers_hand to achieve the game function of selecting difficulty
 
 require_relative "deck"
 require_relative "card"
@@ -16,6 +17,8 @@ class Game
     include Constants
 
     attr_accessor :last_set, :player_list, :deck, :dealers_hand, :has_ended, :winner, :current_player, :card_chosen, :time # add getter and setter methods to help test the methods in this class
+
+    @difficulty # a class instance variable to store the difficulty when restarting the game
 
     #    ----    Constructor method for Game class.    ----    #
 
@@ -30,13 +33,20 @@ class Game
     # hasEned indicates if the game has ended
     # winner indicates who is the winner of the game
     # Constructor will push 12 cards from deck to dealers hand initially to start the game
-    def initialize(player_names)
+    def initialize(player_names, difficulty)
         @player_list = player_names.map.with_index {|name, index| Player.new name, index}
         @deck = Deck.new
         @dealers_hand = []
         @has_ended = false
         @winner = nil
-        12.times {|pos| @dealers_hand << get_card(@deck.remove!, pos)}
+        @difficulty = DIFFICULTY[difficulty.to_i - 1]
+        #puts @difficulty
+        shuffle
+        num_set = get_set_num_dealers_hand
+        until @difficulty.include? num_set
+            shuffle
+            num_set = get_set_num_dealers_hand
+        end
         @current_player = 0
         @card_chosen = Set[]
         @time = Time.now
@@ -247,10 +257,35 @@ class Game
         @dealers_hand = []
         @has_ended = false
         @winner = nil
-        12.times {|pos| @dealers_hand << get_card(@deck.remove!, pos)}
+        shuffle
+        num_set = get_set_num_dealers_hand
+        until @difficulty.include? num_set
+            shuffle
+            num_set = get_set_num_dealers_hand
+        end
         @current_player = 0
         @card_chosen = Set[]
+        @time = Time.now
         @last_set = []
+    end
+
+    def shuffle
+        @deck = Deck.new
+        @dealers_hand = []
+        12.times {|pos| @dealers_hand << get_card(@deck.remove!, pos)}
+    end
+
+    # returns the possible number of set in the dealers hand
+    def get_set_num_dealers_hand
+        set_num = 0
+        @dealers_hand.each {|card1|
+            @dealers_hand.each {|card2|
+                @dealers_hand.each {|card3|
+                    set_num += 1 if is_set?([card1, card2, card3]) if card1 != card2 && card2 != card3 && card1 != card3
+                }
+            }
+        }
+        set_num
     end
 
     def scoreboard

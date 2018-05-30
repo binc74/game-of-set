@@ -1,7 +1,8 @@
 # Created by Bin Chen in 5/29/18
 # Edited by Bin Chen in 5/29/18 - implement initialize and is_in_area method, partially
 #                                  implements the mouse_detection and update method
-
+# Edited by Houyi Fan in 5/30/18 - add the code that restarts the game when pressing restart button
+#
 require 'gosu'
 
 require_relative 'Model/game'
@@ -38,10 +39,10 @@ class Controller
         if is_in_area? x, y, ans_area
             @game.get_ans
         end
-
         restart_button_area = Area.new RESTART_BUTTON_START_X, RESTART_BUTTON_START_Y, BUTTON_SIZE_X, BUTTON_SIZE_Y
         if is_in_area? x, y, restart_button_area
             @game.restart
+            @game.player_list.each {|player| player.restart}
         end
     end
 

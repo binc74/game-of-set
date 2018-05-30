@@ -25,7 +25,10 @@ class SetGame < Gosu::Window
             name_list << gets.chomp!
         end
 
-        @game = Game.new name_list # create the model
+        print "Enter the difficulty you want (1 - 3): "
+        difficulty = gets.chomp!
+
+        @game = Game.new name_list, difficulty # create the model
         @controller = Controller.new @game # create the controller to deal with user input
         @view = View.new @game # create the view to do the graphics
 

@@ -78,13 +78,17 @@ class View
                    ANS_FONT_Y, 0, 1.0, 1.0, Gosu::Color::BLACK
     end
 
+    def draw_timer
+        @font_for_others.draw "Time: #{(Time.now - @game.time).to_i}", TIME_X, TIME_Y, 0, 1.0, 1.0, Gosu::Color::RED
+    end
+
     # draw a game menu on the lower right corner of windows
     def draw_menu
       text_color = Gosu::Color::AQUA
       # draw a "new game" button
       @font_for_menu.draw "Restart", RESTART_BUTTON_START_X, RESTART_BUTTON_START_Y, 0, 1, 1, text_color
       # draw a "shuffle" button
-      @font_for_menu.draw "Shuffle", SHUFFLE_BUTTON_START_X, SHUFFLE_BUTTON_START_Y , 0, 1, 1, text_color
+      # @font_for_menu.draw "Shuffle", SHUFFLE_BUTTON_START_X, SHUFFLE_BUTTON_START_Y , 0, 1, 1, text_color
 
     end
 
@@ -93,9 +97,8 @@ class View
         draw_players
         draw_cards
         draw_ans
-        @font_for_others.draw "Time: #{(Time.now - @game.time).to_i}", TIME_X, TIME_Y, 0, 1.0, 1.0, Gosu::Color::RED
+        draw_timer
         draw_menu
         draw_last_set
-        #@font.draw "Time: #{@game.time}", 600, 100, 0, 1.0, 1.0, Gosu::Color::RED
     end
 end
