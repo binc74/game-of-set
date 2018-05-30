@@ -9,8 +9,11 @@ require_relative "Model/card"
 require_relative "controller"
 require_relative "Model/player"
 require_relative "view"
+require_relative "consts"
 
 class SetGame < Gosu::Window
+    include Consts
+
     def initialize
         # gets the player list
 
@@ -27,9 +30,10 @@ class SetGame < Gosu::Window
         @view = View.new @game # create the view to do the graphics
 
         # start the game
-        super 800, 600 # set the window size
+        super WINDOW_WIDTH, WINDOW_HEIGHT # set the window size
         self.caption = "Set Game" # set the title of the game shown on windows
         @background_image = Gosu::Image.new "Images/background.png"
+        puts "\nGame Starts!"
     end
 
 
@@ -47,7 +51,7 @@ class SetGame < Gosu::Window
 
     # draw the graphics on the screen
     def draw
-        @background_image.draw 0, 0, 0
+        @background_image.draw 0, 0, 0  # draw the background first
         @view.draw # draw the game to the screen
     end
 end

@@ -3,6 +3,10 @@
 
 # this module stores all the constants that needed for this project
 module Consts
+    # Constants for window size
+    WINDOW_HEIGHT = 600
+    WINDOW_WIDTH = 840
+
     # Constants for player graphics
     PLAYER_AREA_X_START = 15
     PLAYER_AREA_X_INDENT = 15
