@@ -2,7 +2,7 @@
 # Bin Chen added the const for player graphics and card graphics in 5/29
 
 # this module stores all the constants that needed for this project
-module Consts
+module Constants
     # Constants for window size
     WINDOW_HEIGHT = 600
     WINDOW_WIDTH = 840

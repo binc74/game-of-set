@@ -7,13 +7,13 @@
 # Card class describes a single card which has 4 attributes (color, symbol, shading, number)
 class Card
   # the getters and setters of this class
-  attr_reader :color, :symbol, :shading, :number, :area
+  attr_reader :color, :symbol, :shading, :number, :area, :index
 
   # class variables that describes the possible attributes a single card can have
-  @@Colors = %w(red green purple)
-  @@Symbols = %w(diamond squiggle oval)
-  @@Shadings = %w(open dashed solid)
-  @@Numbers = %w(1 2 3)
+  @@colors = %w(red green purple)
+  @@symbols = %w(diamond squiggle oval)
+  @@shadings = %w(open dashed solid)
+  @@numbers = %w(1 2 3)
 
   #Constructor method for Card class
   # color must be {(1)red,(2)green, or (3)purple} - pick one
@@ -21,23 +21,24 @@ class Card
   # shading must be {(1)open,(2)dashed, or (3)solid} - pick one
   # number must be {1,2,or 3} - pick one
   # area is the area of the card
-  def initialize (color, symbol, shading, number, area)
+  def initialize (color, symbol, shading, number, index, area)
     @color = color
     @symbol = symbol
     @shading = shading
     @number = number
+    @index = index
     @area = area
   end
 
   # getters that returns the word version of the attributes of card
-  def colorStr; @@Colors[@color-1]; end
-  def symbolStr; @@Symbols[@symbol-1]; end
-  def shadingStr; @@Shadings[@shading-1] ; end
-  def numberStr; @@Numbers[@number -1]; end
+  def color_str; @@colors[@color-1]; end
+  def symbol_str; @@symbols[@symbol-1]; end
+  def shading_str; @@shadings[@shading-1] ; end
+  def number_str; @@numbers[@number -1]; end
 
   # returns the string representation of the card
-  def toString
-    return  "[" + @@Colors[@color-1] + "," + @@Symbols[@symbol-1] + "," + @@Shadings[@shading-1] + "," + @@Numbers[@number -1] + "]"
+  def to_string
+    "[" + @@colors[@color-1] + "," + @@symbols[@symbol-1] + "," + @@shadings[@shading-1] + "," + @@numbers[@number -1] + "]"
   end
 
 end

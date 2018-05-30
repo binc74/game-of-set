@@ -9,11 +9,11 @@ require_relative "Model/deck"
 require_relative "Model/card"
 require_relative "Model/player"
 require_relative "Model/area"
-require_relative "consts"
+require_relative "constants"
 
 # the view class is used to draw the graphics on the screen
 class View
-    include Consts
+    include Constants
 
     def initialize(game)
         @game = game
@@ -23,8 +23,8 @@ class View
 
     # draw all the players
     def draw_players
-        @game.listOfPlayers.each { |player|
-            text_color = player.number == @game.currentPlayer ? Gosu::Color::RED : Gosu::Color::YELLOW
+        @game.player_list.each { |player|
+            text_color = player.number == @game.current_player ? Gosu::Color::RED : Gosu::Color::YELLOW
 
             # Draw the outer rectangle
             # Gosu.draw_rect player.area.x, player.area.y, player.area.width, player.area.height, Gosu::Color::GREEN
@@ -38,22 +38,22 @@ class View
                        player.area.y + 2 * PLAYER_TEXT_INDENT_Y, 0, 1.0, 1.0, text_color
 
             @font.draw "(Current)", player.area.x+ PLAYER_TEXT_INDENT_X,
-                       player.area.y + 3 * PLAYER_TEXT_INDENT_Y, 0, 1.0, 1.0, text_color if player.number == @game.currentPlayer
+                       player.area.y + 3 * PLAYER_TEXT_INDENT_Y, 0, 1.0, 1.0, text_color if player.number == @game.current_player
         }
     end
 
 
     # Get dealersHand from the game and draw it to the screen
     def draw_cards
-        @game.dealersHand.each_index { |i|
-            text_color = @game.cardChosen === i ? Gosu::Color::RED : Gosu::Color::BLACK
-            card = @game.dealersHand[i]
+        @game.dealers_hand.each_index { |i|
+            #text_color = @game.cardChosen === i ? Gosu::Color::RED : Gosu::Color::BLACK
+            card = @game.dealers_hand[i]
 
             # Draw a white rectangular to represent the card area
             # Gosu.draw_rect card.area.x, card.area.y, card.area.width, card.area.height, Gosu::Color::WHITE
 
             # Add corresponding image to each card
-            image = Gosu::Image.new("Images/" + card.colorStr + "_" + card.symbolStr + "_" + card.shadingStr + "_" + card.numberStr + ".PNG")
+            image = Gosu::Image.new("Images/" + card.color_str + "_" + card.symbol_str + "_" + card.shading_str + "_" + card.number_str + ".PNG")
             color = Gosu::Color.argb(0xff_ffffff) # make the color of vertices in image become white. In other words, making the image not in shadow
             image.draw_as_quad card.area.x, card.area.y, color, card.area.x + card.area.width, card.area.y, color, card.area.x, card.area.y + card.area.height, color, card.area.x + card.area.width, card.area.y + card.area.height, color, 0
 

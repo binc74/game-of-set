@@ -5,11 +5,11 @@
 require 'set'
 
 require_relative 'area'
-require_relative '../consts'
+require_relative '../constants'
 
 # Player class contains the information about the player
 class Player
-    include Consts
+    include Constants
 
     attr_reader :name, :number, :area
     #Constructor for Player class
@@ -20,19 +20,19 @@ class Player
         @number = number
         @area = Area.new PLAYER_AREA_X_START + number * (PLAYER_AREA_X_INDENT + PLAYER_AREA_SIZE_X), PLAYER_AREA_START_Y,
                          PLAYER_AREA_SIZE_X, PLAYER_AREA_SIZE_Y
-        @winningHands = Set[]
+        @winning_hands = Set[]
     end
 
     # returns player score
     # score = number of winning hands
     def score
-        @winningHands.length
+        @winning_hands.length
     end
 
     # requires hand is a set of 3 Card objects
     # adds hand to winning hands
-    def addWinningHand(hand)
-        @winningHands.add(hand)
+    def add_winning_hand(hand)
+        @winning_hands.add(hand)
     end
 
 end

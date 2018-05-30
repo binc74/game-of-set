@@ -9,10 +9,10 @@ require_relative "Model/card"
 require_relative "controller"
 require_relative "Model/player"
 require_relative "view"
-require_relative "consts"
+require_relative "constants"
 
 class SetGame < Gosu::Window
-    include Consts
+    include Constants
 
     def initialize
         # gets the player list
@@ -22,7 +22,7 @@ class SetGame < Gosu::Window
 
         gets.chomp!.to_i.times do |i|
             print "Enter the name of player #{i + 1}(No more than 8 characters): "
-            name_list.push gets.chomp!
+            name_list << gets.chomp!
         end
 
         @game = Game.new name_list # create the model
