@@ -1,6 +1,7 @@
 # Created by Bin Chen 5/29/18
 # Edited by Bin Chen in 5/29/18 - implement the initialize, draw_players, draw_cards and draw methods
 # Edited by Houyi Fan in 5/29/18 - add the code that transfers each card to the corresponding image
+# Edited by Houyi Fan in 5/30/18 - add draw_menu, draw_winner, draw_result_message and organize the timer code to draw_timer
 
 require 'gosu'
 
@@ -38,8 +39,13 @@ class View
             @font_for_others.draw "SCORE: #{player.score}", player.area.x+ PLAYER_TEXT_INDENT_X,
                        player.area.y + 2 * PLAYER_TEXT_INDENT_Y, 0, 1.0, 1.0, text_color
 
+            # Write the Player Attempt
+            @font_for_others.draw "Attempt: #{player.attempt}", player.area.x + PLAYER_TEXT_INDENT_X,
+                       player.area.y + 3 * PLAYER_TEXT_INDENT_Y, 0, 1.0, 1.0, text_color
+
+            # Write a mark to indicate who is operating
             @font_for_others.draw "(Current)", player.area.x+ PLAYER_TEXT_INDENT_X,
-                       player.area.y + 3 * PLAYER_TEXT_INDENT_Y, 0, 1.0, 1.0, text_color if player.number == @game.current_player
+                       player.area.y + 4 * PLAYER_TEXT_INDENT_Y, 0, 1.0, 1.0, text_color if player.number == @game.current_player
         }
     end
 
@@ -72,24 +78,35 @@ class View
     end
 
 
-    def draw_ans
-        Gosu.draw_rect ANS_BOX_X, ANS_BOX_Y, ANS_BOX_WIDTH, ANS_BOX_HEIGHT, Gosu::Color::WHITE
-        @font_for_others.draw "Answer?", ANS_FONT_X,
-                   ANS_FONT_Y, 0, 1.0, 1.0, Gosu::Color::BLACK
-    end
+    # def draw_ans
+    #     Gosu.draw_rect ANS_BOX_X, ANS_BOX_Y, ANS_BOX_WIDTH, ANS_BOX_HEIGHT, Gosu::Color::WHITE
+    #     @font_for_others.draw "Answer?", ANS_FONT_X,
+    #                ANS_FONT_Y, 0, 1.0, 1.0, Gosu::Color::BLACK
+    # end
 
+    # draw the timer
     def draw_timer
         @font_for_others.draw "Time: #{(Time.now - @game.time).to_i}", TIME_X, TIME_Y, 0, 1.0, 1.0, Gosu::Color::RED
+    end
+
+    # draw the current winner
+    def draw_winner
+        @font_for_others.draw "Current winner: #{@game.winner.name}", WINNER_X, WINNER_Y, 0, 1.0, 1.0, Gosu::Color::RED
     end
 
     # draw a game menu on the lower right corner of windows
     def draw_menu
       text_color = Gosu::Color::AQUA
       # draw a "new game" button
-      @font_for_menu.draw "Restart", RESTART_BUTTON_START_X, RESTART_BUTTON_START_Y, 0, 1, 1, text_color
+      @font_for_menu.draw "Restart", RESTART_BUTTON_START_X, RESTART_BUTTON_START_Y, 0, 1.0, 1.0, text_color
       # draw a "hint" button
-      @font_for_menu.draw "Hint", HINT_BUTTON_START_X, HINT_BUTTON_START_Y , 0, 1, 1, text_color
+      @font_for_menu.draw "Hint", HINT_BUTTON_START_X, HINT_BUTTON_START_Y , 0, 1.0, 1.0, text_color
+    end
 
+    # draw the result message after a player attempts
+    def draw_result_message
+        text_color = Gosu::Color::YELLOW
+        @font_for_others.draw @game.result_message(@game.result), MESSAGE_START_X, MESSAGE_START_Y, 0, 1.0, 1.0, text_color
     end
 
     # draw on the screen
@@ -100,5 +117,7 @@ class View
         draw_timer
         draw_menu
         draw_last_set
+        draw_result_message
+        draw_winner
     end
 end
