@@ -26,6 +26,7 @@ class Game
 
     #    ----    Constructor method for Game class.    ----    #
 
+
     # @author Josh Wright
     # @requires
     #   |listOfPlayers| > 0
@@ -40,6 +41,7 @@ class Game
     def initialize(player_names, difficulty)
         @player_list = player_names.map.with_index {|name, index| Player.new name, index}
         @difficulty = DIFFICULTY[difficulty.to_i - 1]
+        @difficulty_level = difficulty.to_i
         @buttons = []
         add_buttons!
         restart
@@ -67,6 +69,7 @@ class Game
         @result = false
         @has_chosen = false
         @draw_players = []
+
     end
 
     # get the dealers hand according to the difficulty level
@@ -178,7 +181,9 @@ class Game
         }
         set_left
     end
-
+    def difficulty_level
+      @difficulty_level
+    end
     # Returns the index of a card by doing a linear search in dealers hand list, and returns nil if we cannot find this card
     #@param
     #   card - the card we want to find
@@ -203,12 +208,13 @@ class Game
             for card2 in @dealers_hand
                 for card3 in @dealers_hand
                     if card1 != card2 && card2 != card3 && card1 != card3 && is_set?([card1, card2, card3])
-                        return puts "\nCard ##{self.index_of_card card1}: " + card1.to_string + "\nCard ##{self.index_of_card card2}: " + card2.to_string + "\nCard ##{self.index_of_card card3}: " + card3.to_string
+                        return [card1, card2, card3]
+                        #return puts "\nCard ##{self.index_of_card card1}: " + card1.to_string + "\nCard ##{self.index_of_card card2}: " + card2.to_string + "\nCard ##{self.index_of_card card3}: " + card3.to_string
                     end
                 end
             end
         end
-        puts "No Set Available"
+        #puts "No Set Available"
     end
 
     # replaces the dealers hand list by removing cards from deck to it. When there is no card in deck, just delete cards in the dealers hand list
@@ -355,13 +361,15 @@ class Game
     # returns the possible number of set in the dealers hand
     def get_set_num_dealers_hand
         set_num = 0
-        @dealers_hand.each {|card1|
-            @dealers_hand.each {|card2|
-                @dealers_hand.each {|card3|
-                    set_num += 1 if is_set?([card1, card2, card3]) if card1 != card2 && card2 != card3 && card1 != card3
-                }
-            }
-        }
+        for card1 in @dealers_hand
+          for card2 in @dealers_hand
+            for card3 in @dealers_hand
+              if card1 != card2 && card2 != card3 && card1 != card3 && is_set?([card1, card2, card3])
+                set_num += 1
+              end
+            end
+          end
+        end
         set_num
     end
 
