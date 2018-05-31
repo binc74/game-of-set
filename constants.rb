@@ -6,7 +6,7 @@
 # this module stores all the constants that needed for this project
 module Constants
     # Constants for window size
-    WINDOW_HEIGHT = 600
+    WINDOW_HEIGHT = 650
     WINDOW_WIDTH = 840
 
     # Constants for player graphics
@@ -34,6 +34,10 @@ module Constants
     LAST_SET_1_X = 535 + CARD_SIZE_X
     LAST_SET_2_X = 535 + 2*CARD_SIZE_X
 
+    # Constants for result message
+    MESSAGE_START_X = 15
+    MESSAGE_START_Y = 630
+
     # Constants for Answer button
     ANS_BOX_X = 550
     ANS_BOX_Y = 150
@@ -45,6 +49,10 @@ module Constants
     # Constants for Timer
     TIME_X = 600
     TIME_Y = 100
+
+    # Constants for CurrentWinner
+    WINNER_X = 600
+    WINNER_Y = 150
 
     # Constants for Restart button
     RESTART_BUTTON_START_X = 650
