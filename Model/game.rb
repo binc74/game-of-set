@@ -6,18 +6,21 @@
 # Edited by Bin Chen 5/29/18 - Change the constructor of this class, added get_card and update_player method
 # Edited by Houyi Fan 5/30/18 - Change the constructor and Add restart, shuffle, get_sum_dealers_hand to achieve the game function of selecting difficulty
 # Edited by Houyi Fan 5/31/18 - Change the constructor and restart. Rewrite set_winner!, winner. Add same_score?, same_attempt, result_message. Modify submit_set. Achieve the function of determining the winner.
+# Edited by Bin Chen 5/31/18 - refactor the initialize function, and add a list of buttons
 
 require_relative "deck"
 require_relative "card"
 require_relative "player"
 require_relative "area"
 require_relative "../constants"
+require_relative "Buttons/hint_button"
+require_relative "Buttons/restart_button"
 
 # Game class contains all operations and rules for the game
 class Game
     include Constants
 
-    attr_accessor :last_set, :player_list, :deck, :dealers_hand, :has_ended, :winner, :current_player, :card_chosen, :time,:result # add getter and setter methods to help test the methods in this class
+    attr_accessor :last_set, :player_list, :deck, :dealers_hand, :has_ended, :winner, :current_player, :card_chosen, :time,:result, :buttons # add getter and setter methods to help test the methods in this class
 
     @difficulty # a class instance variable to store the difficulty when restarting the game
 
@@ -36,18 +39,27 @@ class Game
     # Constructor will push 12 cards from deck to dealers hand initially to start the game
     def initialize(player_names, difficulty)
         @player_list = player_names.map.with_index {|name, index| Player.new name, index}
+        @difficulty = DIFFICULTY[difficulty.to_i - 1]
+        @buttons = []
+        add_buttons!
+        restart
+    end
+
+    #    ----    Kernel Methods    ----    #
+
+    # add buttons the @buttons
+    def add_buttons!
+        @buttons << HintButton.new(Area.new(HINT_BUTTON_START_X, HINT_BUTTON_START_Y, HINT_BUTTON_SIZE_X, HINT_BUTTON_SIZE_Y), self)
+        @buttons << RestartButton.new(Area.new(RESTART_BUTTON_START_X, RESTART_BUTTON_START_Y, RESTART_BUTTON_SIZE_X, RESTART_BUTTON_SIZE_Y), self)
+    end
+
+    # restart the game
+    def restart
         @deck = Deck.new
         @dealers_hand = []
         @has_ended = false
         @winner = nil
-        @difficulty = DIFFICULTY[difficulty.to_i - 1]
-        #puts @difficulty
-        shuffle
-        num_set = get_set_num_dealers_hand
-        until @difficulty.include? num_set
-            shuffle
-            num_set = get_set_num_dealers_hand
-        end
+        get_dealers_hand_by_difficulty!
         @current_player = 0
         @card_chosen = Set[]
         @time = Time.now
@@ -57,7 +69,15 @@ class Game
         @draw_players = []
     end
 
-    #    ----    Kernel Methods    ----    #
+    # get the dealers hand according to the difficulty level
+    def get_dealers_hand_by_difficulty!
+        shuffle
+        num_set = get_set_num_dealers_hand
+        until @difficulty.include? num_set
+            shuffle
+            num_set = get_set_num_dealers_hand
+        end
+    end
 
     # finds the winner with the highest score, if there are more than one player having the same score, we compare the
     # number of attempts each player has made. If no player has ever made an attempt or  more than one player has the same score and same attempt number, then there is no winner
@@ -324,27 +344,6 @@ class Game
             ""
         end
         # @has_chosen ? (result ? "This is a Set": "This is not a Set") : ""
-    end
-
-    def restart
-        @deck = Deck.new
-        @dealers_hand = []
-        @has_ended = false
-        @winner = nil
-        shuffle
-        num_set = get_set_num_dealers_hand
-        # puts @difficulty
-        until @difficulty.include? num_set
-            shuffle
-            num_set = get_set_num_dealers_hand
-        end
-        @current_player = 0
-        @card_chosen = Set[]
-        @time = Time.now
-        @last_set = []
-        @result = false
-        @has_chosen = false
-        @draw_players = []
     end
 
     def shuffle
