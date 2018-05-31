@@ -2,6 +2,7 @@
 # Edited by Bin Chen in 5/29/18 - implement the initialize, draw_players, draw_cards and draw methods
 # Edited by Houyi Fan in 5/29/18 - add the code that transfers each card to the corresponding image
 # Edited by Houyi Fan in 5/30/18 - add draw_menu, draw_winner, draw_result_message and organize the timer code to draw_timer
+# Edited by Bin Chen in 5/31/18 - reorganize the graphics and add the draw_set_remain function
 
 require 'gosu'
 
@@ -18,8 +19,9 @@ class View
 
     def initialize(game)
         @game = game
-        @font_for_menu = Gosu::Font.new(40)    # the font size for menu
-        @font_for_others = Gosu::Font.new(20)  # the font size for player and hint
+        @font_for_menu = Gosu::Font.new FONT_SIZE_MENU    # the font size for menu
+        @font_for_player = Gosu::Font.new FONT_SIZE_PLAYER  # the font size for player and hint
+        @font_for_others = Gosu::Font.new FONT_SIZE_OTHERS # font size for hint and other messages
     end
 
 
@@ -32,19 +34,19 @@ class View
             # Gosu.draw_rect player.area.x, player.area.y, player.area.width, player.area.height, Gosu::Color::GREEN
 
             # Write the Player Number
-            @font_for_others.draw "#{player.name} (##{player.number + 1})", player.area.x + PLAYER_TEXT_INDENT_X,
+            @font_for_player.draw "#{player.name} (##{player.number + 1})", player.area.x + PLAYER_TEXT_INDENT_X,
                        player.area.y + PLAYER_TEXT_INDENT_Y, 0, 1.0, 1.0, text_color
 
             # Write the Player Score
-            @font_for_others.draw "SCORE: #{player.score}", player.area.x+ PLAYER_TEXT_INDENT_X,
+            @font_for_player.draw "SCORE: #{player.score}", player.area.x+ PLAYER_TEXT_INDENT_X,
                        player.area.y + 2 * PLAYER_TEXT_INDENT_Y, 0, 1.0, 1.0, text_color
 
             # Write the Player Attempt
-            @font_for_others.draw "Attempt: #{player.attempt}", player.area.x + PLAYER_TEXT_INDENT_X,
+            @font_for_player.draw "Attempt: #{player.attempt}", player.area.x + PLAYER_TEXT_INDENT_X,
                        player.area.y + 3 * PLAYER_TEXT_INDENT_Y, 0, 1.0, 1.0, text_color
 
             # Write a mark to indicate who is operating
-            @font_for_others.draw "(Current)", player.area.x+ PLAYER_TEXT_INDENT_X,
+            @font_for_player.draw "(Current)", player.area.x+ PLAYER_TEXT_INDENT_X,
                        player.area.y + 4 * PLAYER_TEXT_INDENT_Y, 0, 1.0, 1.0, text_color if player.number == @game.current_player
         }
     end
@@ -63,12 +65,17 @@ class View
             image = Gosu::Image.new("Images/" + card.color_str + "_" + card.symbol_str + "_" + card.shading_str + "_" + card.number_str + ".PNG")
             color = @game.card_chosen.include?(i) ? Gosu::Color.argb(0xff_ffffff) : Gosu::Color.argb(0xaa_faffff) # make the color of vertices in image become white. In other words, making the image not in shadow
             image.draw_as_quad card.area.x, card.area.y, color, card.area.x + card.area.width, card.area.y, color, card.area.x, card.area.y + card.area.height, color, card.area.x + card.area.width, card.area.y + card.area.height, color, 0
-
+            @font_for_player.draw i.to_s, card.area.x + CARD_INDEX_INDENT_X, card.area.y + CARD_INDEX_INDENT_Y, 0, 1.0, 1.0, Gosu::Color::YELLOW
         }
     end
 
 
     def draw_last_set
+        @font_for_others.draw "Last Set Found: ", LAST_SET_TEXT_X, LAST_SET_TEXT_Y, 0, 1.0, 1.0, Gosu::Color::RED
+        if @game.last_set.length == 0
+            @font_for_others.draw "None", LAST_SET_TEXT_X, LAST_SET_Y, 0, 1.0, 1.0, Gosu::Color::RED
+            return
+        end
       @game.last_set.each_index { |i|
         card = @game.last_set[i]
         image = Gosu::Image.new("Images/" + card.color_str + "_" + card.symbol_str + "_" + card.shading_str + "_" + card.number_str + ".PNG")
@@ -91,7 +98,7 @@ class View
 
     # draw the current winner
     def draw_winner
-        @font_for_others.draw "Current winner: #{@game.winner.name}", WINNER_X, WINNER_Y, 0, 1.0, 1.0, Gosu::Color::RED
+        @font_for_others.draw "Winner: #{@game.winner.name}", WINNER_X, WINNER_Y, 0, 1.0, 1.0, Gosu::Color::RED
     end
 
     # draw a game menu on the lower right corner of windows
@@ -106,18 +113,23 @@ class View
     # draw the result message after a player attempts
     def draw_result_message
         text_color = Gosu::Color::YELLOW
-        @font_for_others.draw @game.result_message(@game.result), MESSAGE_START_X, MESSAGE_START_Y, 0, 1.0, 1.0, text_color
+        @font_for_player.draw @game.result_message(@game.result), MESSAGE_START_X, MESSAGE_START_Y, 0, 1.0, 1.0, text_color
+    end
+
+    # draw the sets remained in dealers hand
+    def draw_set_remain
+        @font_for_others.draw "Sets Remain: #{@game.get_set_num_dealers_hand}", SET_REMAIN_X, SET_REMAIN_Y, 0, 1.0, 1.0, Gosu::Color::RED
     end
 
     # draw on the screen
     def draw
         draw_players
         draw_cards
-        # draw_ans
         draw_timer
         draw_menu
         draw_last_set
         draw_result_message
         draw_winner
+        draw_set_remain
     end
 end

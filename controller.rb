@@ -3,7 +3,7 @@
 #                                  implements the mouse_detection and update method
 # Edited by Houyi Fan in 5/30/18 - add the code that restarts the game when pressing restart button
 #                                  change the "Answer?" button to "Hint" button
-#
+
 require 'gosu'
 
 require_relative 'Model/game'
@@ -53,7 +53,7 @@ class Controller
     end
 
     # update the model of game according to user's input
-    def update mouse_pos
+    def update(mouse_pos)
         if Gosu.button_down? Gosu::MS_LEFT and not @is_pressed
             mouse_detection mouse_pos[0], mouse_pos[1]
             @is_pressed = true
