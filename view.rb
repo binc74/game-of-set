@@ -85,13 +85,6 @@ class View
     }
   end
 
-
-  # def draw_ans
-  #     Gosu.draw_rect ANS_BOX_X, ANS_BOX_Y, ANS_BOX_WIDTH, ANS_BOX_HEIGHT, Gosu::Color::WHITE
-  #     @font_for_others.draw "Answer?", ANS_FONT_X,
-  #                ANS_FONT_Y, 0, 1.0, 1.0, Gosu::Color::BLACK
-  # end
-
   # draw the timer
   def draw_timer
     @font_for_others.draw "Time: #{(Time.now - @game.time).to_i}", TIME_X, TIME_Y, 0, 1.0, 1.0, Gosu::Color::RED
@@ -105,11 +98,7 @@ class View
   # draw a game menu on the lower right corner of windows
   def draw_menu
     text_color = Gosu::Color::AQUA
-    # draw a "new game" button
-    #@font_for_menu.draw "Restart", RESTART_BUTTON_START_X, RESTART_BUTTON_START_Y, 0, 1.0, 1.0, text_color
-    # draw a "hint" button
-    #@font_for_menu.draw "Hint", HINT_BUTTON_START_X, HINT_BUTTON_START_Y , 0, 1.0, 1.0, text_color
-    #
+
     @game.buttons.each { |button|
       @font_for_menu.draw button.text, button.area.x, button.area.y, 0, 1.0, 1.0, text_color
     }
