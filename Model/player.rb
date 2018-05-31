@@ -3,6 +3,7 @@
 # Edited by Houyi Fan 5/26/18 - Complete comments and delete unused variable
 # Edited by Bin Chen 5/29/18 - Change the constructor and adding getter and setter methods
 # Edited by Houyi Fan 5/30/18 - Add the restart method
+# Edited by Houyi Fan 5/30/18 - Change the constructor and restart method
 require 'set'
 
 require_relative 'area'
@@ -13,7 +14,7 @@ class Player
     include Constants
 
     attr_reader :name, :number, :area, :winning_hands
-    attr_accessor :log
+    attr_accessor :log, :attempt
     #Constructor for Player class
     # name is the name of the player
     # WinningsHand contains the cards that have been identified as a part of set by the player successfully. And the number of cards in it will be the score of this player.
@@ -24,6 +25,7 @@ class Player
                          PLAYER_AREA_SIZE_X, PLAYER_AREA_SIZE_Y
         @winning_hands = []
         @log = []
+        @attempt = 0
     end
 
     # returns player score
@@ -44,6 +46,7 @@ class Player
 
     def restart
         @winning_hands = []
+        @attempt = 0
     end
 
 end

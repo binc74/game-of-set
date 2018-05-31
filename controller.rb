@@ -2,6 +2,7 @@
 # Edited by Bin Chen in 5/29/18 - implement initialize and is_in_area method, partially
 #                                  implements the mouse_detection and update method
 # Edited by Houyi Fan in 5/30/18 - add the code that restarts the game when pressing restart button
+#                                  change the "Answer?" button to "Hint" button
 #
 require 'gosu'
 

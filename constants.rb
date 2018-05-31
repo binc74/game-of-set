@@ -1,7 +1,7 @@
 # Created by Bin Chen in 5/29
 # Bin Chen added the const for player graphics and card graphics in 5/29
 # Jeb Alawi added const for answer button, timer 5/30
-# Houyi Fan added const for restart button, difficulty 5/30
+# Houyi Fan added const for restart button, difficulty, hint button, result message, current winner 5/30
 
 # this module stores all the constants that needed for this project
 module Constants

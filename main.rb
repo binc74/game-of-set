@@ -1,6 +1,7 @@
 # Created by Josh Wright in 5/23
 # Bin Chen implements the main and the display_card methods in 5/24
 # Edited by Bin Chen in 5/29/18 - Completely change the main class to do the graphics
+# Edited by Houyi Fan in 5/30/18 - Add the code to ask the user for difficulty
 
 require 'gosu'
 
@@ -25,7 +26,7 @@ class SetGame < Gosu::Window
             name_list << gets.chomp!
         end
 
-        print "Enter the difficulty you want (1 - 3): "
+        print "Enter the difficulty you want(1 - 3): "
         difficulty = gets.chomp!
 
         @game = Game.new name_list, difficulty # create the model

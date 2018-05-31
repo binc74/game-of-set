@@ -5,6 +5,7 @@
 # Edited by Houyi Fan 5/26/18 - Complete comments
 # Edited by Bin Chen 5/29/18 - Change the constructor of this class, added get_card and update_player method
 # Edited by Houyi Fan 5/30/18 - Change the constructor and Add restart, shuffle, get_sum_dealers_hand to achieve the game function of selecting difficulty
+# Edited by Houyi Fan 5/31/18 - Change the constructor and restart. Rewrite set_winner!, winner. Add same_score?, same_attempt, result_message. Modify submit_set. Achieve the function of determining the winner.
 
 require_relative "deck"
 require_relative "card"
@@ -16,7 +17,7 @@ require_relative "../constants"
 class Game
     include Constants
 
-    attr_accessor :last_set, :player_list, :deck, :dealers_hand, :has_ended, :winner, :current_player, :card_chosen, :time # add getter and setter methods to help test the methods in this class
+    attr_accessor :last_set, :player_list, :deck, :dealers_hand, :has_ended, :winner, :current_player, :card_chosen, :time,:result # add getter and setter methods to help test the methods in this class
 
     @difficulty # a class instance variable to store the difficulty when restarting the game
 
@@ -51,23 +52,81 @@ class Game
         @card_chosen = Set[]
         @time = Time.now
         @last_set = []
+        @result = false
+        @has_chosen = false
+        @draw_players = []
     end
 
     #    ----    Kernel Methods    ----    #
 
-    # finds the winner with the highest score
-    # requires @hasEnded = true
+    # finds the winner with the highest score, if there are more than one player having the same score, we compare the
+    # number of attempts each player has made. If no player has ever made an attempt or  more than one player has the same score and same attempt number, then there is no winner
+    # @requires player_list.length > 0
     def set_winner!
-        max_score_player = @player_list[0]
-        @player_list.each {|player| max_score_player = player if max_score_player.score < player.score}
-        max_score_player
-    end
-
-
-    # returns the game winner
-    def winner
+        if @has_chosen
+            max_score_player = @player_list[0]
+            #@player_list.each {|player| max_score_player = player if max_score_player.score < player.score}
+            @player_list.each do |player|
+                max_score_player = player if max_score_player.score < player.score
+                # if max_score_player.score == player.score && max_score_player.attempt > player.attempt
+                #     max_score_player = player
+                # end
+            end
+            if max_score_player.score == 0
+                @winner = Player.new"No winner", 0
+            else
+                if same_score? max_score_player
+                    @player_list.each do |player|
+                        if max_score_player.score == player.score && max_score_player.attempt > player.attempt
+                            @draw_players.delete max_score_player
+                            max_score_player = player
+                        end
+                    end
+                    if @draw_players.length == 1
+                        @winner = @draw_players[0]
+                    elsif same_attempt? max_score_player
+                        @winner = Player.new"No winner", 0
+                    else
+                        max_score_min_attempt_player = max_score_player
+                        @draw_players.each{|player| max_score_min_attempt_player = player if max_score_min_attempt_player.attempt > player.attempt}
+                        @winner = max_score_min_attempt_player
+                    end
+                else
+                    @winner = max_score_player
+                end
+            end
+        else
+            @winner = Player.new"No winner", 0
+        end
         @winner
     end
+
+    def same_score? (max_score_player)
+        @draw_players = []
+        count = 0
+        @player_list.each do |player|
+            if player.score == max_score_player.score
+                count += 1
+                @draw_players.push player
+            end
+        end
+        count > 1
+    end
+
+    def same_attempt?(max_score_player)
+        @draw_players.each do |player|
+            if player.attempt != max_score_player.attempt
+                return false
+            end
+        end
+        true
+    end
+
+    def winner
+        return set_winner! if @player_list.length > 1
+        return @player_list[0] if @player_list.length == 1
+    end
+
 
     # resets the dealers hand list by moving current cards in it back to deck and retrieving cards from deck again
     def reset_hand
@@ -224,12 +283,15 @@ class Game
 
 
     def submit_set card_set_index
+        @has_chosen = true
         card_set_arr = card_set_index.to_a
         card_set_arr = [@dealers_hand[card_set_arr[0]],@dealers_hand[card_set_arr[1]],@dealers_hand[card_set_arr[2]]]
         card_set = Set[]
         3.times {|i| card_set.add card_set_arr[i]}
+        player_list[current_player].attempt += 1
         if is_set? card_set_arr
-            print "This is a Set\n"
+            @result = true
+            #print "This is a Set\n"
             replace_cards(card_set_index.to_a)
             player_list[current_player].add_winning_hand card_set_arr
             player_list[current_player].log.push((Time.now-time).to_i)
@@ -247,9 +309,21 @@ class Game
             @card_chosen = Set[]
 
         else
-            print "This is not a Set\n"
+            @result = false
+            #print "This is not a Set\n"
             @card_chosen = Set[]
         end
+    end
+
+    # returns a message after a player attempts
+    def result_message (result)
+        # using if-else block to avoid nested ternary operators
+        if @has_chosen
+            result ? "This is a Set": "This is not a Set"
+        else
+            ""
+        end
+        # @has_chosen ? (result ? "This is a Set": "This is not a Set") : ""
     end
 
     def restart
@@ -268,6 +342,9 @@ class Game
         @card_chosen = Set[]
         @time = Time.now
         @last_set = []
+        @result = false
+        @has_chosen = false
+        @draw_players = []
     end
 
     def shuffle
