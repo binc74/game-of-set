@@ -4,6 +4,7 @@
 # Edited by Houyi Fan 5/24/18 - Add "attr_accessor" for instance variables to help test the methods in this class, Fix a bug in setLeftInDealersHand
 # Edited by Houyi Fan 5/26/18 - Complete comments
 # Edited by Bin Chen 5/29/18 - Change the constructor of this class, added get_card and update_player method
+# Edited by Jeb Alawi 5/30/18 - Added update_set! and submit_set to allow game gui to be playable
 # Edited by Houyi Fan 5/30/18 - Change the constructor and Add restart, shuffle, get_sum_dealers_hand to achieve the game function of selecting difficulty
 # Edited by Houyi Fan 5/31/18 - Change the constructor and restart. Rewrite set_winner!, winner. Add same_score?, same_attempt, result_message. Modify submit_set. Achieve the function of determining the winner.
 # Edited by Bin Chen 5/31/18 - refactor the initialize function, and add a list of buttons
@@ -295,6 +296,7 @@ class Game
         end
     end
 
+    # updates @card_chosen, adds cards to array when clicked, removes them when unclicked, submits cards when three are selected
     def update_set!(i)
         if @card_chosen.include?(i)
             @card_chosen.delete(i)
@@ -307,13 +309,12 @@ class Game
     end
 
 
-
+    # adds attempt to player, checks if cards make a set, replaces set in dealers hand, logs winning hand to player as well as time hand was submitted,
+    # displays last set of cards selected
     def submit_set card_set_index
         @has_chosen = true
         card_set_arr = card_set_index.to_a
         card_set_arr = [@dealers_hand[card_set_arr[0]],@dealers_hand[card_set_arr[1]],@dealers_hand[card_set_arr[2]]]
-        card_set = Set[]
-        3.times {|i| card_set.add card_set_arr[i]}
         player_list[current_player].attempt += 1
         if is_set? card_set_arr
             @result = true
@@ -373,9 +374,6 @@ class Game
         set_num
     end
 
-    def scoreboard
-
-    end
 
 end
 

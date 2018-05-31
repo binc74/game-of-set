@@ -1,6 +1,6 @@
 # Created by Bin Chen in 5/29
 # Bin Chen added the const for player graphics and card graphics in 5/29
-# Jeb Alawi added const for answer button, timer 5/30
+# Jeb Alawi added const for answer button, timer, last set on 5/30
 # Houyi Fan added const for restart button, difficulty, hint button, result message, current winner 5/30
 # Edited by Bin Chen 5/31/18 - added constants for drawing the set left hint
 
