@@ -273,7 +273,7 @@ class Game
     # get the player list with max score
     player_with_max_score = []
     @player_list.each { |player| player_with_max_score << player if player.score == max_score }
-    player_with_max_score.sort { |a, b| a.attempt <=> b.attempt }
+    player_with_max_score.sort! { |a, b| a.attempt <=> b.attempt }
 
     # if there are two players with same highest score and attempt, no winner
     @winner = (player_with_max_score.length == 1 or
