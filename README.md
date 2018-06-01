@@ -41,7 +41,7 @@
     
     2 - Hint shows one card from a set
     
-    3 - No hints
+    3 - No hint
    
 * Timer - Counts the seconds gone by since the game started
 
