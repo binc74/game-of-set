@@ -3,7 +3,7 @@
 # Edited by Bin Chen in 5/29/18 - Completely change the main class to do the graphics
 # Edited by Houyi Fan in 5/30/18 - Add the code to ask the user for difficulty
 # Edited by Jeb Alwi on 5/30/18 - Added print statistic functionality at end of game
-
+# Edited by Bin Chen on 6/1/18 - Modify the printing result
 
 require 'gosu'
 
@@ -78,14 +78,20 @@ class SetGame < Gosu::Window
 
   # print the status of each players in the game on the console
   #
+  # i - the player number
+  #
   # Created by Jeb Alawi 5/30/18
-  def print_stat i
+  def print_stat(i)
     puts "Player: " + @game.player_list[i].name
+    puts "No Set Found!" if @game.player_list[i].score == 0
+
     @game.player_list[i].winning_hands.map.with_index {|k, j|
-      puts "Time: " + @game.player_list[i].log[j].to_s
+      puts "Set ##{j + 1}"
+      puts "Time Found: " + @game.player_list[i].log[j].to_s
+      puts "Content: "
       puts k[0].to_string
       puts k[1].to_string
-      puts k[2].to_string + "\n"
+      puts k[2].to_string + "\n\n"
     }
   end
 end
@@ -95,4 +101,5 @@ game1.show
 puts "Game Ended!!!\n"
 
 # print the status of every player after the window is closed in normal ways
+puts "Results:"
 game1.game.player_list.each_index {|player| game1.print_stat(player)}
