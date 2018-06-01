@@ -99,8 +99,9 @@ end
 
 game1 = SetGame.new
 game1.show
-puts "Game Ended!!!\n"
+puts "\nGame Ended!!!\n"
 
 # print the status of every player after the window is closed in normal ways
-puts "Results:"
+puts "Winner: " + game1.game.winner.name
+puts "\nIndividual Results: "
 game1.game.player_list.each_index {|player| game1.print_stat(player)}
