@@ -2,7 +2,8 @@
 # Implemented by Bin Chen 5/23/18 - add test for constructor and remove
 # Edited by Houyi Fan 5/27/18 - Complete comments
 # Edited by Jeb Alawi 5/28/18 - added test_remove3, test_remove81, test_class, test_add, test_remove_add, test_removeAll_add,
-#     test_removeAll_add81
+#                               test_removeAll_add81
+# Edited by Bin Chen 5/31/18 - modified all of the test cases because of the change of the deck class
 
 require 'test/unit'
 require_relative '../Model/deck'
@@ -12,19 +13,21 @@ class DeckTest < Test::Unit::TestCase
   # Called before every test method runs. Can be used
   # to set up fixture information.
   def setup
-    # Do nothing
+    # Nothing
   end
 
   def test_constructor
     assert_equal(81, Deck.new.size)
   end
 
+  # ensures that a cards can be correctly removed from the deck
   def test_remove
     deck = Deck.new
     deck.remove!
     assert_equal(80, deck.size)
   end
 
+  # ensures that a number of cards can be correctly removed from the deck
   def test_remove3
     deck = Deck.new
     3.times{deck.remove!}
@@ -38,43 +41,13 @@ class DeckTest < Test::Unit::TestCase
     assert_equal(0,deck.size)
   end
 
-  # ensures deck.remove returns an object of class Card
+  # ensures deck.remove returns an array of 4 integers with each values
   def test_class
-    deck = Deck.new
-    card = deck.remove!
-    testCard = Card.new(1,1,1,1)
-    assert_equal(testCard.class,card.class )
-  end
-
-  def test_add
-    deck = Deck.new
-    card = Card.new(1,1,1,1)
-    deck.add!(card)
-    assert_equal(82, deck.size)
-  end
-
-  #removes a card then adds it back to the deck
-  def test_remove_add
-    deck = Deck.new
-    card = deck.remove!
-    deck.add!(card)
-    assert_equal(81, deck.size)
-  end
-
-  def test_removeAll_add
-    deck = Deck.new
-    card = deck.remove!
-    80.times{deck.remove!}
-    deck.add!(card)
-    assert_equal(1, deck.size)
-  end
-
-  def test_removeAll_add81
-    deck = Deck.new
-    card = deck.remove!
-    80.times{deck.remove!}
-    81.times{deck.add!(card)}
-    assert_equal(81, deck.size)
+    card_property = Deck.new.remove!
+    assert_equal 4, card_property.length
+    card_property.each { |property|
+      assert_equal true, property >= 1 and property <= 3
+    }
   end
 
   # Called after every test method runs. Can be used to tear

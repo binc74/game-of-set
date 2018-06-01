@@ -1,10 +1,11 @@
-# Created by Bin Chen 5/29/18
-# Edited by Bin Chen in 5/29/18 - implement the initialize, draw_players, draw_cards and draw methods
-# Edited by Houyi Fan in 5/29/18 - add the code that transfers each card to the corresponding image
-# Edited by Houyi Fan in 5/30/18 - add draw_menu, draw_winner, draw_result_message and organize the timer code to draw_timer
+# Created by Bin Chen on 5/29/18
+# Edited by Bin Chen on 5/29/18 - implement the initialize, draw_players, draw_cards and draw methods
+# Edited by Houyi Fan on 5/29/18 - added the code that transfers each card to the corresponding image
+# Edited by Houyi Fan on 5/30/18 - added draw_menu, draw_winner, draw_result_message and organize the timer code to draw_timer
 # Edited by Jeb Alawi on 5/30/18 - added draw_last_set, draw_timer, made cards transparent when not selected and solid when selected
-# Edited by Bin Chen in 5/31/18 - reorganize the graphics and add the draw_set_remain function
-# Edited by Bin Chen in 5/31/18 - created a button class and refactor all the codes about buttons
+# Edited by Bin Chen on 5/31/18 - reorganize the graphics and add the draw_set_remain function
+# Edited by Bin Chen on 5/31/18 - created a button class and refactor all the codes about buttons
+# Edited by Josh Wright on 5/31/18 - updated draw_winner method and method contracts
 
 require 'gosu'
 
@@ -19,15 +20,19 @@ require_relative "constants"
 class View
   include Constants
 
+  #Constructore Method for View Class
+  # @Author Bin Chen
   def initialize(game)
-    @game = game
+    @game = game #game instance variable
     @font_for_menu = Gosu::Font.new FONT_SIZE_MENU # the font size for menu
     @font_for_player = Gosu::Font.new FONT_SIZE_PLAYER # the font size for player and hint
     @font_for_others = Gosu::Font.new FONT_SIZE_OTHERS # font size for hint and other messages
   end
 
 
-  # draw all the players
+  # Draws all the players information on the screen
+  # @Author Bin Chen
+  # @updates the view
   def draw_players
     @game.player_list.each {|player|
       text_color = player.number == @game.current_player ? Gosu::Color::RED : Gosu::Color::YELLOW
@@ -54,7 +59,8 @@ class View
   end
 
 
-  # Get dealersHand from the game and draw it to the screen
+  # Gets dealersHand from the game and draw it to the screen.
+  # @Author Bin Chen
   def draw_cards
     @game.dealers_hand.each_index {|i|
       #text_color = @game.cardChosen === i ? Gosu::Color::RED : Gosu::Color::BLACK
@@ -71,7 +77,7 @@ class View
     }
   end
 
-
+  # @Author Jeb Alawi
   def draw_last_set
     @font_for_others.draw "Last Set Found: ", LAST_SET_TEXT_X, LAST_SET_TEXT_Y, 0, 1.0, 1.0, Gosu::Color::RED
     if @game.last_set.length == 0
@@ -86,14 +92,22 @@ class View
     }
   end
 
+  #@author
   # draw the timer
   def draw_timer
     @font_for_others.draw "Time: #{(Time.now - @game.time).to_i}", TIME_X, TIME_Y, 0, 1.0, 1.0, Gosu::Color::RED
   end
 
+  #@Author
   # draw the current winner
   def draw_winner
-    @font_for_others.draw "Winner: #{@game.winner.name}", WINNER_X, WINNER_Y, 0, 1.0, 1.0, Gosu::Color::RED
+    @font_for_others.draw "Winner: #{
+      if @game.has_ended?
+        @game.winner.name
+      else
+        ""
+      end
+    }", WINNER_X, WINNER_Y, 0, 1.0, 1.0, Gosu::Color::RED
   end
 
   # draw a game menu on the lower right corner of windows
@@ -113,7 +127,7 @@ class View
 
   # draw the sets remained in dealers hand
   def draw_set_remain
-    @font_for_others.draw "Sets Remain: #{@game.get_set_num_dealers_hand}", SET_REMAIN_X, SET_REMAIN_Y, 0, 1.0, 1.0, Gosu::Color::RED
+    @font_for_others.draw "Sets In Hand: #{@game.get_set_num_dealers_hand}", SET_REMAIN_X, SET_REMAIN_Y, 0, 1.0, 1.0, Gosu::Color::RED
   end
 
   # draw on the screen
