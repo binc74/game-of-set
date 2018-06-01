@@ -2,6 +2,7 @@
 # Edited by Bin Chen in 5/29/18 - implement the initialize, draw_players, draw_cards and draw methods
 # Edited by Houyi Fan in 5/29/18 - add the code that transfers each card to the corresponding image
 # Edited by Houyi Fan in 5/30/18 - add draw_menu, draw_winner, draw_result_message and organize the timer code to draw_timer
+# Edited by Jeb Alawi on 5/30/18 - added draw_last_set, draw_timer, made cards transparent when not selected and solid when selected
 # Edited by Bin Chen in 5/31/18 - reorganize the graphics and add the draw_set_remain function
 # Edited by Bin Chen in 5/31/18 - created a button class and refactor all the codes about buttons
 

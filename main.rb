@@ -2,6 +2,7 @@
 # Bin Chen implements the main and the display_card methods in 5/24
 # Edited by Bin Chen in 5/29/18 - Completely change the main class to do the graphics
 # Edited by Houyi Fan in 5/30/18 - Add the code to ask the user for difficulty
+# Edited by Jeb Alwi on 5/30/18 - Added print statistic functionality at end of game
 
 
 require 'gosu'
@@ -77,7 +78,7 @@ class SetGame < Gosu::Window
 
   # print the status of each players in the game on the console
   #
-  #
+  # Created by Jeb Alawi 5/30/18
   def print_stat i
     puts "Player: " + @game.player_list[i].name
     @game.player_list[i].winning_hands.map.with_index {|k, j|

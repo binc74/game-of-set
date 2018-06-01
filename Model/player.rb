@@ -4,6 +4,7 @@
 # Edited by Bin Chen 5/29/18 - Change the constructor and adding getter and setter methods
 # Edited by Houyi Fan 5/30/18 - Add the restart method
 # Edited by Houyi Fan 5/30/18 - Change the constructor and restart method
+# Edited by Jeb Alawi 5/30/18 - Added log to keep track of time winning_hands are selected
 require 'set'
 
 require_relative 'area'
@@ -40,9 +41,6 @@ class Player
         @winning_hands.push(hand)
     end
 
-    def add_to_log
-
-    end
 
     def restart
         @winning_hands = []
