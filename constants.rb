@@ -76,7 +76,7 @@ module Constants
     HINT_BUTTON_SIZE_Y = 35
 
     # Constant ranges for difficulty for game
-    DIFFICULTY = [29..42, 15..28, 1..14]
+    DIFFICULTY = [5..20, 3..4, 1..2]
 
     # Constants for font size
     FONT_SIZE_MENU = 40

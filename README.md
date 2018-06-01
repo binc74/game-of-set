@@ -37,11 +37,11 @@
 
 * Difficulty
 
-    1 - Hint shows two cards from a set, and the initial dealers hand contains 29 - 42 sets of available sets
+    1 - Hint shows two cards from a set, and the initial dealers hand contains more than 4 sets of available sets
     
-    2 - Hint shows one card from a set, and the initial dealers hand contains 15 - 28 sets of available sets
+    2 - Hint shows one card from a set, and the initial dealers hand contains 3 to 4 sets of available sets
     
-    3 - No hint, and the initial dealers hand contains 1 - 14 sets of available sets
+    3 - No hint, and the initial dealers hand contains 1 to 2 sets of available sets
    
 * Timer - Counts the seconds gone by since the game started
 

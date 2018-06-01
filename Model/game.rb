@@ -449,15 +449,14 @@ class Game
   # @Authors Houyi Fan
   def get_set_num_dealers_hand
     set_num = 0
-    for card1 in @dealers_hand
-      for card2 in @dealers_hand
-        for card3 in @dealers_hand
-          if card1 != card2 && card2 != card3 && card1 != card3 && is_set?([card1, card2, card3])
-            set_num += 1
-          end
-        end
-      end
-    end
+    length = @dealers_hand.length
+    (0...length).each { |i|
+      ((i + 1)...length).each { |j|
+        ((j + 1)...length).each { |k|
+          set_num = set_num +  1 if is_set? [@dealers_hand[i], @dealers_hand[j], @dealers_hand[k]]
+        }
+      }
+    }
     set_num
   end
 end
