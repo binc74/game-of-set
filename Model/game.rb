@@ -193,7 +193,9 @@ class Game
         }
     end
 
-    # setting the hasEnded as true and determining the winner if there is no card remaining in deck and no set in dealers hand
+    # Sets hasEnded to true and determines the winner if there are no card remaining in deck and no sets left in the
+    # dealers hand.
+    # @Author Josh Wright
     def has_ended?
         if @deck.size == 0 && (@dealers_hand.length == 0 || !set_left_in_dealers_hand?)
             @has_ended = true
@@ -305,8 +307,6 @@ class Game
             submit_set @card_chosen
         end
     end
-
-
 
     def submit_set card_set_index
         @has_chosen = true
