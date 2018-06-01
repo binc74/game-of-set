@@ -26,8 +26,11 @@ class SetGame < Gosu::Window
     # gets the player list
     name_list = []
     print "Enter the number of players(1 - 4): "
-
-    gets.chomp!.to_i.times do |i|
+    num_players = gets.chomp!.to_i
+    until num_players > 0 && num_players < 5
+        puts "Incorrect player numberEnter the number of players(1 - 4): "
+    end
+    num_players.times do |i|
       print "Enter the name of player #{i + 1}(No more than 8 characters): "
       name_list << gets.chomp!
     end
