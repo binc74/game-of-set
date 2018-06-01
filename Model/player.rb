@@ -46,8 +46,8 @@ class Player
         @winning_hands.push(hand)
     end
 
-    #@Author
-    # Houyi Fan
+    #@Author Houyi Fan
+    # empty the winning hands and attempt times when the game restarts
     def restart
         @winning_hands = []
         @attempt = 0

@@ -23,6 +23,7 @@ class SetGame < Gosu::Window
   #
   # Created by Bin Chen in 5/29/18
   # Edited by Bin Chen in 5/29/18 - reading players name list and initialize the game, view and controller
+  # Edited by Houyi Fan in 5/30/18 - reading the difficulty the player wants
   def initialize
     # gets the player list
     name_list = []
