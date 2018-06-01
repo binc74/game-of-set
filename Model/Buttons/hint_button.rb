@@ -1,5 +1,6 @@
 # Created by Bin Chen in 5/31/18
 # Implemented by Bin Chen in 5/31/18 - implemented the constructor and execute method of button
+# Edited by Josh Wright 5/31/18 - edited execute method to implement full hint functionality.
 
 require_relative 'button'
 require_relative '../game'
