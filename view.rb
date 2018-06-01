@@ -115,7 +115,9 @@ class View
     text_color = Gosu::Color::AQUA
 
     @game.buttons.each { |button|
+      if not(@game.difficulty_level == 3 && button.class == HintButton.new(1,@game).class)
       @font_for_menu.draw button.text, button.area.x, button.area.y, 0, 1.0, 1.0, text_color
+      end
     }
   end
 

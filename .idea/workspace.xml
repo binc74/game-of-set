@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3ad23a35-afd6-4fd8-a9f4-440c93722f6f" name="Default" comment="fixed get_hint bug, index_of_card bug">
+    <list default="true" id="3ad23a35-afd6-4fd8-a9f4-440c93722f6f" name="Default" comment="documentation update">
       <change beforePath="$PROJECT_DIR$/.idea/RubyRubyRu-Project-2-Ruby-Game-of-Set.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RubyRubyRu-Project-2-Ruby-Game-of-Set.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/game_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/testing/game_test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view.rb" beforeDir="false" afterPath="$PROJECT_DIR$/view.rb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,50 +15,82 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/RubyRubyRu_Project_2_Ruby_Game_of_SetMVC@Run_test__game_test___RubyRubyRu_Project_2_Ruby_Game_of_Set.rcov" NAME="Run test 'game_test': RubyRubyRu-Project-2-Ruby-Game-of-Set Coverage Results" MODIFIED="1527829261460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="RubyRubyRu-Project-2-Ruby-Game-of-Set" />
     <SUITE FILE_PATH="coverage/RubyRubyRu_Project_2_Ruby_Game_of_Set@Run_test__MyTest___RubyRubyRu_Project_2_Ruby_Game_of_Set__1_.rcov" NAME="Run test 'MyTest': RubyRubyRu-Project-2-Ruby-Game-of-Set (1) Coverage Results" MODIFIED="1527109960549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="RubyRubyRu-Project-2-Ruby-Game-of-Set" />
     <SUITE FILE_PATH="coverage/RubyRubyRu_Project_2_Ruby_Game_of_Set@Run_test__game_test___RubyRubyRu_Project_2_Ruby_Game_of_Set.rcov" NAME="Run test 'game_test': RubyRubyRu-Project-2-Ruby-Game-of-Set Coverage Results" MODIFIED="1527698752054" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="RubyRubyRu-Project-2-Ruby-Game-of-Set" />
-    <SUITE FILE_PATH="coverage/RubyRubyRu_Project_2_Ruby_Game_of_Set@Main.rcov" NAME="Main Coverage Results" MODIFIED="1527826567125" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="RubyRubyRu-Project-2-Ruby-Game-of-Set" />
-    <SUITE FILE_PATH="coverage/RubyRubyRu_Project_2_Ruby_Game_of_Set@Run_test__MyTest___RubyRubyRu_Project_2_Ruby_Game_of_Set.rcov" NAME="Run test 'MyTest': RubyRubyRu-Project-2-Ruby-Game-of-Set Coverage Results" MODIFIED="1527536980708" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="RubyRubyRu-Project-2-Ruby-Game-of-Set" />
     <SUITE FILE_PATH="coverage/RubyRubyRu_Project_2_Ruby_Game_of_Set@Run_test__card_test___RubyRubyRu_Project_2_Ruby_Game_of_Set.rcov" NAME="Run test 'card_test': RubyRubyRu-Project-2-Ruby-Game-of-Set Coverage Results" MODIFIED="1527110286531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="RubyRubyRu-Project-2-Ruby-Game-of-Set" />
+    <SUITE FILE_PATH="coverage/RubyRubyRu_Project_2_Ruby_Game_of_Set@Main.rcov" NAME="Main Coverage Results" MODIFIED="1527701243884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="RubyRubyRu-Project-2-Ruby-Game-of-Set" />
+    <SUITE FILE_PATH="coverage/RubyRubyRu_Project_2_Ruby_Game_of_SetMVC@game.rcov" NAME="game Coverage Results" MODIFIED="1527802219579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Model" MODULE_NAME="RubyRubyRu-Project-2-Ruby-Game-of-Set" />
+    <SUITE FILE_PATH="coverage/RubyRubyRu_Project_2_Ruby_Game_of_Set@Run_test__MyTest___RubyRubyRu_Project_2_Ruby_Game_of_Set.rcov" NAME="Run test 'MyTest': RubyRubyRu-Project-2-Ruby-Game-of-Set Coverage Results" MODIFIED="1527536980708" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="RubyRubyRu-Project-2-Ruby-Game-of-Set" />
     <SUITE FILE_PATH="coverage/RubyRubyRu_Project_2_Ruby_Game_of_Set@Run_test__player_test___RubyRubyRu_Project_2_Ruby_Game_of_Set.rcov" NAME="Run test 'player_test': RubyRubyRu-Project-2-Ruby-Game-of-Set Coverage Results" MODIFIED="1527183101250" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="RubyRubyRu-Project-2-Ruby-Game-of-Set" />
+    <SUITE FILE_PATH="coverage/RubyRubyRu_Project_2_Ruby_Game_of_SetMVC@Main.rcov" NAME="Main Coverage Results" MODIFIED="1527829632540" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="RubyRubyRu-Project-2-Ruby-Game-of-Set" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="game_test.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testing/game_test.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+            <state relative-caret-position="145">
+              <caret line="29" column="29" lean-forward="true" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.rb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="243">
+              <caret line="22" column="3" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="card_test.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testing/card_test.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1909">
+              <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="game.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model/game.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3546">
+              <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="button.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model/Buttons/button.rb">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="player.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Model/player.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="620">
-              <caret line="42" selection-start-line="42" selection-end-line="42" />
+            <state relative-caret-position="300">
+              <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controller.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller.rb">
+      <file leaf-file-name="view.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="92" selection-start-line="6" selection-start-column="92" selection-end-line="6" selection-end-column="92" />
+            <state relative-caret-position="155">
+              <caret line="112" column="57" lean-forward="true" selection-start-line="112" selection-start-column="57" selection-end-line="112" selection-end-column="57" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="117">
-                <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
-              </first_editor>
-              <second_editor />
+      <file leaf-file-name="hint_button.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model/Buttons/hint_button.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-62">
+              <caret line="2" column="93" selection-start-line="2" selection-start-column="93" selection-end-line="2" selection-end-column="93" />
             </state>
           </provider>
         </entry>
@@ -77,14 +110,12 @@
       <find>index</find>
       <find>indexOf</find>
       <find>replace</find>
-      <find>update_s</find>
       <find>get_hin</find>
-      <find>repla</find>
       <find>re</find>
+      <find>update_s</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -98,15 +129,14 @@
         <option value="$PROJECT_DIR$/Main.rb" />
         <option value="$PROJECT_DIR$/testing/deck_test.rb" />
         <option value="$PROJECT_DIR$/testing/player_test.rb" />
-        <option value="$PROJECT_DIR$/Model/card.rb" />
-        <option value="$PROJECT_DIR$/main.rb" />
-        <option value="$PROJECT_DIR$/testing/game_test.rb" />
-        <option value="$PROJECT_DIR$/constants.rb" />
-        <option value="$PROJECT_DIR$/view.rb" />
-        <option value="$PROJECT_DIR$/Model/game.rb" />
-        <option value="$PROJECT_DIR$/Model/player.rb" />
         <option value="$PROJECT_DIR$/controller.rb" />
-        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/main.rb" />
+        <option value="$PROJECT_DIR$/Model/card.rb" />
+        <option value="$PROJECT_DIR$/Model/player.rb" />
+        <option value="$PROJECT_DIR$/Model/Buttons/hint_button.rb" />
+        <option value="$PROJECT_DIR$/Model/game.rb" />
+        <option value="$PROJECT_DIR$/testing/game_test.rb" />
+        <option value="$PROJECT_DIR$/view.rb" />
       </list>
     </option>
   </component>
@@ -125,10 +155,10 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="width" value="839" />
-    <option name="height" value="1040" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="22" />
+    <option name="width" value="1280" />
+    <option name="height" value="725" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -140,17 +170,23 @@
         <subPane>
           <expand>
             <path>
-              <item name="RubyRubyRu-Project-2-Ruby-Game-of-Set" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RubyRubyRu-Project-2-Ruby-Game-of-Set" type="462c0819:PsiDirectoryNode" />
+              <item name="RubyRubyRu-Project-2-Ruby-Game-of-SetMVC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RubyRubyRu-Project-2-Ruby-Game-of-SetMVC" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="RubyRubyRu-Project-2-Ruby-Game-of-Set" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RubyRubyRu-Project-2-Ruby-Game-of-Set" type="462c0819:PsiDirectoryNode" />
+              <item name="RubyRubyRu-Project-2-Ruby-Game-of-SetMVC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RubyRubyRu-Project-2-Ruby-Game-of-SetMVC" type="462c0819:PsiDirectoryNode" />
               <item name="Model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="RubyRubyRu-Project-2-Ruby-Game-of-Set" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RubyRubyRu-Project-2-Ruby-Game-of-Set" type="462c0819:PsiDirectoryNode" />
+              <item name="RubyRubyRu-Project-2-Ruby-Game-of-SetMVC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RubyRubyRu-Project-2-Ruby-Game-of-SetMVC" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+              <item name="Buttons" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RubyRubyRu-Project-2-Ruby-Game-of-SetMVC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RubyRubyRu-Project-2-Ruby-Game-of-SetMVC" type="462c0819:PsiDirectoryNode" />
               <item name="testing" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -169,6 +205,121 @@
       <recent name="D:\Projects\proj2\RubyRubyRu-Project-2-Ruby-Game-of-Set\testing" />
     </key>
   </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/RubyRubyRu-Project-2-Ruby-Game-of-Set.iml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/README.md</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/controller.rb</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/testing/card_test.rb</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/testing/game_test.rb</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -182,7 +333,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Ruby.Main">
-    <configuration name="Main" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
+    <configuration name="Main" type="RubyRunConfigurationType" factoryName="Ruby">
       <module name="RubyRubyRu-Project-2-Ruby-Game-of-Set" />
       <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
       <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$" />
@@ -197,6 +348,23 @@
         </COVERAGE_PATTERN>
       </EXTENSION>
       <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/Main.rb" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
+    </configuration>
+    <configuration name="game" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
+      <module name="RubyRubyRu-Project-2-Ruby-Game-of-Set" />
+      <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/Model" />
+      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/Model/game.rb" />
       <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
     </configuration>
     <configuration name="Run test 'MyTest': RubyRubyRu-Project-2-Ruby-Game-of-Set" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest" temporary="true">
@@ -268,7 +436,11 @@
       </envs>
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
       <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/testing/game_test.rb" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="" />
@@ -308,16 +480,17 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
     </configuration>
     <list>
+      <item itemvalue="Ruby.Main" />
       <item itemvalue="Test::Unit/Shoulda/Minitest.Run test 'MyTest': RubyRubyRu-Project-2-Ruby-Game-of-Set" />
       <item itemvalue="Test::Unit/Shoulda/Minitest.Run test 'player_test': RubyRubyRu-Project-2-Ruby-Game-of-Set" />
       <item itemvalue="Test::Unit/Shoulda/Minitest.Run test 'card_test': RubyRubyRu-Project-2-Ruby-Game-of-Set" />
-      <item itemvalue="Ruby.Main" />
       <item itemvalue="Test::Unit/Shoulda/Minitest.Run test 'game_test': RubyRubyRu-Project-2-Ruby-Game-of-Set" />
+      <item itemvalue="Ruby.game" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Ruby.Main" />
         <item itemvalue="Test::Unit/Shoulda/Minitest.Run test 'game_test': RubyRubyRu-Project-2-Ruby-Game-of-Set" />
+        <item itemvalue="Ruby.game" />
         <item itemvalue="Test::Unit/Shoulda/Minitest.Run test 'MyTest': RubyRubyRu-Project-2-Ruby-Game-of-Set" />
         <item itemvalue="Test::Unit/Shoulda/Minitest.Run test 'player_test': RubyRubyRu-Project-2-Ruby-Game-of-Set" />
         <item itemvalue="Test::Unit/Shoulda/Minitest.Run test 'card_test': RubyRubyRu-Project-2-Ruby-Game-of-Set" />
@@ -343,9 +516,10 @@
       <workItem from="1527196896188" duration="1145000" />
       <workItem from="1527532009600" duration="178000" />
       <workItem from="1527532216640" duration="8167000" />
-      <workItem from="1527576519055" duration="16740000" />
-      <workItem from="1527794094985" duration="1787000" />
-      <workItem from="1527824605667" duration="2953000" />
+      <workItem from="1527576519055" duration="6178000" />
+      <workItem from="1527792586780" duration="4793000" />
+      <workItem from="1527797390503" duration="6179000" />
+      <workItem from="1527808419854" duration="13104000" />
     </task>
     <task id="LOCAL-00001" summary="test cases">
       <created>1527612913960</created>
@@ -375,102 +549,101 @@
       <option name="project" value="LOCAL" />
       <updated>1527701202036</updated>
     </task>
-    <task id="LOCAL-00005" summary="fixed get_hint bug, index_of_card bug">
-      <created>1527701314978</created>
+    <task id="LOCAL-00005" summary="Fixed method to count number of sets in the hand and added hint feature">
+      <created>1527802801000</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1527701314978</updated>
+      <updated>1527802801000</updated>
     </task>
-    <task id="LOCAL-00006" summary="added timer, answer button">
-      <created>1527704542326</created>
+    <task id="LOCAL-00006" summary="Fixed method to count number of sets in the hand and added hint feature">
+      <created>1527812712689</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1527704542326</updated>
+      <updated>1527812712689</updated>
     </task>
-    <task id="LOCAL-00007" summary="last set finished">
-      <created>1527709247336</created>
+    <task id="LOCAL-00007" summary="game update">
+      <created>1527822219707</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1527709247336</updated>
+      <updated>1527822219707</updated>
     </task>
-    <task id="LOCAL-00008" summary="scoreboard / log done">
-      <created>1527711648083</created>
+    <task id="LOCAL-00008" summary="documentation update">
+      <created>1527822451755</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1527711648083</updated>
+      <updated>1527822451755</updated>
     </task>
-    <task id="LOCAL-00009" summary="added some documentation">
-      <created>1527804072157</created>
+    <task id="LOCAL-00009" summary="documentation update">
+      <created>1527826982943</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1527804072158</updated>
+      <updated>1527826982943</updated>
     </task>
-    <task id="LOCAL-00010" summary="Readme and some documentation">
-      <created>1527827379701</created>
+    <task id="LOCAL-00010" summary="documentation update">
+      <created>1527828586213</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1527827379702</updated>
+      <updated>1527828586213</updated>
     </task>
     <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Run_test_'MyTest'__RubyRubyRu-Project-2-Ruby-Game-of-Set - 2018.05.28 at 14h 56m 25s.xml">
-      <configuration name="Run test 'MyTest': RubyRubyRu-Project-2-Ruby-Game-of-Set" configurationId="TestUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="Run_test_'MyTest'__RubyRubyRu-Project-2-Ruby-Game-of-Set - 2018.05.28 at 15h 49m 41s.xml">
-      <configuration name="Run test 'MyTest': RubyRubyRu-Project-2-Ruby-Game-of-Set" configurationId="TestUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="Run_test_'game_test'__RubyRubyRu-Project-2-Ruby-Game-of-Set - 2018.05.28 at 15h 49m 49s.xml">
+    <history-entry file="Run_test_'game_test'__RubyRubyRu-Project-2-Ruby-Game-of-Set - 2018.06.01 at 00h 28m 27s.xml">
       <configuration name="Run test 'game_test': RubyRubyRu-Project-2-Ruby-Game-of-Set" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'game_test'__RubyRubyRu-Project-2-Ruby-Game-of-Set - 2018.05.28 at 15h 50m 53s.xml">
+    <history-entry file="Run_test_'game_test'__RubyRubyRu-Project-2-Ruby-Game-of-Set - 2018.06.01 at 00h 30m 05s.xml">
       <configuration name="Run test 'game_test': RubyRubyRu-Project-2-Ruby-Game-of-Set" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'game_test'__RubyRubyRu-Project-2-Ruby-Game-of-Set - 2018.05.28 at 15h 51m 34s.xml">
+    <history-entry file="Run_test_'game_test'__RubyRubyRu-Project-2-Ruby-Game-of-Set - 2018.06.01 at 00h 30m 21s.xml">
       <configuration name="Run test 'game_test': RubyRubyRu-Project-2-Ruby-Game-of-Set" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'game_test'__RubyRubyRu-Project-2-Ruby-Game-of-Set - 2018.05.28 at 16h 23m 11s.xml">
+    <history-entry file="Run_test_'game_test'__RubyRubyRu-Project-2-Ruby-Game-of-Set - 2018.06.01 at 00h 32m 53s.xml">
       <configuration name="Run test 'game_test': RubyRubyRu-Project-2-Ruby-Game-of-Set" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'game_test'__RubyRubyRu-Project-2-Ruby-Game-of-Set - 2018.05.28 at 18h 22m 34s.xml">
+    <history-entry file="Run_test_'game_test'__RubyRubyRu-Project-2-Ruby-Game-of-Set - 2018.06.01 at 00h 34m 20s.xml">
       <configuration name="Run test 'game_test': RubyRubyRu-Project-2-Ruby-Game-of-Set" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'game_test'__RubyRubyRu-Project-2-Ruby-Game-of-Set - 2018.05.28 at 18h 23m 09s.xml">
+    <history-entry file="Run_test_'game_test'__RubyRubyRu-Project-2-Ruby-Game-of-Set - 2018.06.01 at 00h 34m 39s.xml">
       <configuration name="Run test 'game_test': RubyRubyRu-Project-2-Ruby-Game-of-Set" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'game_test'__RubyRubyRu-Project-2-Ruby-Game-of-Set - 2018.05.28 at 18h 23m 16s.xml">
+    <history-entry file="Run_test_'game_test'__RubyRubyRu-Project-2-Ruby-Game-of-Set - 2018.06.01 at 00h 58m 14s.xml">
       <configuration name="Run test 'game_test': RubyRubyRu-Project-2-Ruby-Game-of-Set" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'game_test'__RubyRubyRu-Project-2-Ruby-Game-of-Set - 2018.05.30 at 12h 45m 52s.xml">
+    <history-entry file="Run_test_'game_test'__RubyRubyRu-Project-2-Ruby-Game-of-Set - 2018.06.01 at 00h 59m 12s.xml">
+      <configuration name="Run test 'game_test': RubyRubyRu-Project-2-Ruby-Game-of-Set" configurationId="TestUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="Run_test_'game_test'__RubyRubyRu-Project-2-Ruby-Game-of-Set - 2018.06.01 at 00h 59m 31s.xml">
+      <configuration name="Run test 'game_test': RubyRubyRu-Project-2-Ruby-Game-of-Set" configurationId="TestUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="Run_test_'game_test'__RubyRubyRu-Project-2-Ruby-Game-of-Set - 2018.06.01 at 01h 01m 03s.xml">
       <configuration name="Run test 'game_test': RubyRubyRu-Project-2-Ruby-Game-of-Set" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48762000" />
+    <option name="totallyTimeSpent" value="57536000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="22" width="1280" height="725" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14563759" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.159375" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.3890625" side_tool="true" visible="true" weight="0.37634408" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3299712" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22792023" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6109375" visible="true" weight="0.37634408" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32872504" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -480,35 +653,31 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.37634408" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16019033" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32872504" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Messages" order="12" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -517,13 +686,10 @@
     <MESSAGE value="test cases" />
     <MESSAGE value="picking cards, hint box" />
     <MESSAGE value="fixed get_hint bug" />
-    <MESSAGE value="fixed get_hint bug, index_of_card bug" />
-    <MESSAGE value="added timer, answer button" />
-    <MESSAGE value="last set finished" />
-    <MESSAGE value="scoreboard / log done" />
-    <MESSAGE value="added some documentation" />
-    <MESSAGE value="Readme and some documentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Readme and some documentation" />
+    <MESSAGE value="Fixed method to count number of sets in the hand and added hint feature" />
+    <MESSAGE value="game update" />
+    <MESSAGE value="documentation update" />
+    <option name="LAST_COMMIT_MESSAGE" value="documentation update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -531,23 +697,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/testing/game_test.rb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testing/card_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="43" column="29" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/card.rb" />
     <entry file="file://$PROJECT_DIR$/game.rb" />
     <entry file="file://$PROJECT_DIR$/main.rb">
@@ -661,13 +810,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/card.rb" />
     <entry file="file://$PROJECT_DIR$/player.rb" />
-    <entry file="file://$PROJECT_DIR$/testing/card_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/deck.rb" />
     <entry file="file://$PROJECT_DIR$/game.rb" />
     <entry file="file://$PROJECT_DIR$/testing/deck_test.rb">
@@ -684,112 +826,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="84" selection-start-line="4" selection-start-column="84" selection-end-line="4" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/card.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Model/area.rb">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Buttons/restart_button.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/constants.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="61" selection-start-line="2" selection-start-column="61" selection-end-line="2" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-646">
-          <caret line="4" column="132" selection-start-line="4" selection-start-column="132" selection-end-line="4" selection-end-column="132" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/game.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="82" selection-start-line="6" selection-start-column="82" selection-end-line="6" selection-end-column="82" />
-          <folding>
-            <element signature="e#1206#15511#1" />
-            <element signature="e#2198#2493#0" />
-            <element signature="e#1206#15511#1" />
-            <element signature="e#2576#2881#0" />
-            <element signature="e#2910#3255#0" />
-            <element signature="e#3322#3546#0" />
-            <element signature="e#3888#5638#0" />
-            <element signature="e#5644#5938#0" />
-            <element signature="e#5944#6154#0" />
-            <element signature="e#6007#6133#0" />
-            <element signature="e#6160#6291#0" />
-            <element signature="e#6413#6551#0" />
-            <element signature="e#6618#6733#0" />
-            <element signature="e#6772#6855#0" />
-            <element signature="e#6952#7321#0" />
-            <element signature="e#7326#7378#0" />
-            <element signature="e#1206#15511#1" />
-            <element signature="e#7560#7691#0" />
-            <element signature="e#7824#8010#0" />
-            <element signature="e#1206#15511#1" />
-            <element signature="e#8208#8825#0" />
-            <element signature="e#1206#15511#1" />
-            <element signature="e#9055#9418#0" />
-            <element signature="e#1206#15511#1" />
-            <element signature="e#9516#9656#0" />
-            <element signature="e#1206#15511#1" />
-            <element signature="e#9877#10077#0" />
-            <element signature="e#1206#15511#1" />
-            <element signature="e#10285#10517#0" />
-            <element signature="e#1206#15511#1" />
-            <element signature="e#10729#10972#0" />
-            <element signature="e#1206#15511#1" />
-            <element signature="e#11188#11444#0" />
-            <element signature="e#1206#15511#1" />
-            <element signature="e#11656#11899#0" />
-            <element signature="e#11905#11994#0" />
-            <element signature="e#12026#12330#0" />
-            <element signature="e#12385#12636#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testing/game_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/player.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        <state relative-caret-position="1200">
+          <caret line="80" column="29" selection-start-line="80" selection-start-column="29" selection-end-line="80" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="92" selection-start-line="6" selection-start-column="92" selection-end-line="6" selection-end-column="92" />
+        <state relative-caret-position="244">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="117">
-            <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/Model/card.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="43" column="15" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/player.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/card_test.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1909">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/game.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3546">
+          <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/game_test.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="29" column="29" lean-forward="true" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Buttons/hint_button.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-62">
+          <caret line="2" column="93" selection-start-line="2" selection-start-column="93" selection-end-line="2" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Buttons/button.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="112" column="57" lean-forward="true" selection-start-line="112" selection-start-column="57" selection-end-line="112" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="22" column="3" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="3" />
         </state>
       </provider>
     </entry>
