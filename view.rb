@@ -77,6 +77,7 @@ class View
     }
   end
 
+  #draw the last set being selected by the plater
   # @Author Jeb Alawi
   def draw_last_set
     @font_for_others.draw "Last Set Found: ", LAST_SET_TEXT_X, LAST_SET_TEXT_Y, 0, 1.0, 1.0, Gosu::Color::RED
@@ -92,14 +93,15 @@ class View
     }
   end
 
-  #@author
+
   # draw the timer
+  #  @Author Houyi Fan
   def draw_timer
     @font_for_others.draw "Time: #{(Time.now - @game.time).to_i}", TIME_X, TIME_Y, 0, 1.0, 1.0, Gosu::Color::RED
   end
 
-  #@Author
   # draw the current winner
+  #   @Author Houyi Fan
   def draw_winner
     @font_for_others.draw "Winner: #{
       if @game.has_ended?
@@ -111,6 +113,7 @@ class View
   end
 
   # draw a game menu on the lower right corner of windows
+  #   @Author Houyi Fan
   def draw_menu
     text_color = Gosu::Color::AQUA
 
@@ -120,12 +123,14 @@ class View
   end
 
   # draw the result message after a player attempts
+  #  @Author Houyi Fan
   def draw_result_message
     text_color = Gosu::Color::YELLOW
     @font_for_player.draw @game.result_message(@game.result), MESSAGE_START_X, MESSAGE_START_Y, 0, 1.0, 1.0, text_color
   end
 
   # draw the sets remained in dealers hand
+  #   @Author Bin Chen
   def draw_set_remain
     @font_for_others.draw "Sets In Hand: #{@game.get_set_num_dealers_hand}", SET_REMAIN_X, SET_REMAIN_Y, 0, 1.0, 1.0, Gosu::Color::RED
   end
