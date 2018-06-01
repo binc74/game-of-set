@@ -5,6 +5,7 @@
 # Edited by Houyi Fan 5/30/18 - Add the restart method
 # Edited by Houyi Fan 5/30/18 - Change the constructor and restart method
 # Edited by Jeb Alawi 5/30/18 - Added log to keep track of time winning_hands are selected
+# Edited by Bin Chen 5/31/18 - Modified all the test cases because the change of deck.rb, added test cases for the restart method
 require 'set'
 
 require_relative 'area'
