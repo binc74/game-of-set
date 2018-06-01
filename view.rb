@@ -118,7 +118,7 @@ class View
     text_color = Gosu::Color::AQUA
 
     @game.buttons.each { |button|
-      @font_for_menu.draw button.text, button.area.x, button.area.y, 0, 1.0, 1.0, text_color
+        @font_for_menu.draw button.text, button.area.x, button.area.y, 0, 1.0, 1.0, text_color unless @game.difficulty_level == 3 and button.instance_of? HintButton
     }
   end
 
