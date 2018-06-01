@@ -60,6 +60,9 @@ class Controller
 
   # update the model of game according to user's input
   #
+  # mouse_pos - a list that contains two float values, mouse_x and mouse_y, where (mouse_x, mouse_y) is the position of cursor on the window
+  #             position of cursor on the window
+  #
   # Created by Bin Chen in 5/29/18
   # Implemented by Bin Chen in 5/29/18 - detecting the left mouse clicking
   def update(mouse_pos)
