@@ -255,7 +255,8 @@ class Game
       end
       # @has_chosen ? (result ? "This is a Set": "This is not a Set") : ""
     end
-  
+
+
 
   def ended?
     @has_ended
