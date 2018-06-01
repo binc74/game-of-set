@@ -74,7 +74,9 @@ Also list if people worked together (pair programmed) on a particular section.
 
 Bin Chen:
 
-Josh Wright:
+Josh Wright: Came up with the initial/primitive model designs including Card, Deck, Player, and Game. 
+Implemented the Card class, a large portion of the Game class, some game_test methods, and some of the Deck class. 
+Edited features: hint button, and winner display.
 
 Jeb Alawi:
 Implemented Last Set Found, Timer, selection of cards in GUI, Hint button, replacing cards from a set in GUI
