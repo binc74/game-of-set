@@ -19,9 +19,13 @@
     # If you are using system Ruby, you will need "sudo" to install Ruby libraries (gems)
     sudo gem install gosu
     ```
+* No input checking implemented, so the player should make sure they enter valid input
+
+* Our way of determine the winner may be different (we use not only score but also player attempts, and if multiple 
+player obtains the highest score and with same amount of attempt, this situation count as no winner)
 
 ### Running the Program
-* To run the program run the following command: `ruby main.rb`
+* To run the program run the following command: `ruby main.rb` or simply run the main.rb class
 * Enter the number of players when asked
 * Enter the names of the players
 * Choose a difficulty (1-3)
@@ -47,7 +51,9 @@
 
 * Sets Remain -  Shows the number of sets left
 
-* Winner - Displays the current winner
+* Winner - Displays the current winner (the winner is the one with the highest score, and if multiple players have the 
+same highest score, choose the one with least attempt. If multiple player have same highest score and attempts, this situation count as 
+no winner)
 
 * Last Set Found - Shows the last set found
 
