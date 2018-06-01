@@ -57,23 +57,130 @@ class GameTest < Test::Unit::TestCase
       }
     }
   end
+  
 
-  # display_cards??
+  # @author Jeb Alawi
+  # replace cards
+  def test_replace_cards
+    testGame = Game.new(["Fan"], 1)
+    testGame.dealers_hand[0] = Card.new(1,1,1,1, 0, @area)
+    c1 = testGame.dealers_hand[0]
+    testGame.dealers_hand[1] = Card.new(1,1,1,2, 1, @area)
+    c2 = testGame.dealers_hand[1]
+    testGame.dealers_hand[2] = Card.new(1,1,1,3, 2, @area)
+    c3 = testGame.dealers_hand[2]
+    testGame.replace_cards [0,1,2]
+    assert_equal(false,c1 == testGame.dealers_hand[0])
+    assert_equal(false,c2 == testGame.dealers_hand[1])
+    assert_equal(false,c3 == testGame.dealers_hand[2])
+    assert_equal(12, testGame.dealers_hand.length)
 
+  end
 
-  # displayHint??
+  # replenish hand
+  def test_replenish_hand
+    testGame = Game.new(["Fan"], 1)
+    testGame.replenish_hand!
+    assert_equal(12, testGame.dealers_hand.length)
+  end
 
+  # @author Jeb Alawi
+  # update player
+  def test_update_player
+    testGame = Game.new(%w("Fan", "Ran"), 1)
+    assert_equal(0, testGame.current_player)
+    testGame.update_player! testGame.player_list[1]
+    assert_equal(1, testGame.current_player)
+  end
 
-  # indexOfCard
+  # @author Jeb Alawi
+  # update player to same player
+  def test_update_player_same_player
+    testGame = Game.new(%w("Fan", "Ran"), 1)
+    assert_equal(0, testGame.current_player)
+    testGame.update_player! testGame.player_list[0]
+    assert_equal(0, testGame.current_player)
+  end
 
+  # @author Jeb Alawi
+  # update set with one card
+  def test_update_set!
+    testGame = Game.new(["Fan"], 1)
+    testGame.update_set!(1)
+    assert_equal(1,testGame.card_chosen.length)
+  end
 
-  # hasEnded
+  # @author Jeb Alawi
+  # update set with two cards
+  def test_update_set2
+    testGame = Game.new(["Fan"], 1)
+    testGame.update_set!(1)
+    testGame.update_set!(2)
+    assert_equal(2,testGame.card_chosen.length)
+  end
 
+  # @author Jeb Alawi
+  # update set with three cards
+  def test_update_set3
+    testGame = Game.new(["Fan"], 1)
+    testGame.update_set!(1)
+    testGame.update_set!(2)
+    testGame.update_set!(3)
+    assert_equal(0,testGame.card_chosen.length)
+  end
 
-  # getHint??
+  # @author Jeb Alawi
+  # submit set when there is a set
+  def test_submit_set
+    testGame = Game.new(["Fan"], 1)
+    testGame.dealers_hand[0] = Card.new(1,1,1,1, 0, @area)
+    c1 = testGame.dealers_hand[0]
+    testGame.dealers_hand[1] = Card.new(1,1,1,2, 1, @area)
+    c2 = testGame.dealers_hand[1]
+    testGame.dealers_hand[2] = Card.new(1,1,1,3, 2, @area)
+    c3 = testGame.dealers_hand[2]
+    card_set = Set[0,1,2]
+    testGame.submit_set(card_set)
+    assert_equal(1,testGame.player_list[0].attempt)
+    assert_equal(1,testGame.player_list[0].winning_hands.length)
+    assert_equal(1,testGame.player_list[0].log.length)
+    assert_equal(3,testGame.last_set.length)
+    assert_equal(0,testGame.card_chosen.length)
+    assert_equal(false,c1 == testGame.dealers_hand[0])
+    assert_equal(false,c2 == testGame.dealers_hand[1])
+    assert_equal(false,c3 == testGame.dealers_hand[2])
+  end
 
+  # @author Jeb Alawi
+  # submit set when there is not a set
+  def test_submit_set_no_set
+    testGame = Game.new(["Fan"], 1)
+    testGame.dealers_hand[0] = Card.new(1,2,1,1, 0, @area)
+    c1 = testGame.dealers_hand[0]
+    testGame.dealers_hand[1] = Card.new(1,2,2,2, 1, @area)
+    c2 = testGame.dealers_hand[1]
+    testGame.dealers_hand[2] = Card.new(3,3,3,3, 2, @area)
+    c3 = testGame.dealers_hand[2]
+    card_set = Set[0,1,2]
+    testGame.submit_set(card_set)
+    assert_equal(1,testGame.player_list[0].attempt)
+    assert_equal(0,testGame.player_list[0].winning_hands.length)
+    assert_equal(0,testGame.player_list[0].log.length)
+    assert_equal(0,testGame.last_set.length)
+    assert_equal(0,testGame.card_chosen.length)
+    assert_equal(true,c1 == testGame.dealers_hand[0])
+    assert_equal(true,c2 == testGame.dealers_hand[1])
+    assert_equal(true,c3 == testGame.dealers_hand[2])
+  end
 
-  # replace_cards
+  # @author Jeb Alawi
+  # shuffle
+  def test_shuffle
+    testGame = Game.new(["Fan"], 1)
+    testGame.shuffle
+    assert_equal(12, testGame.dealers_hand.length)
+  end
+
 
   # test for constructor with one player
   def test_constructor_one_player
@@ -82,7 +189,7 @@ class GameTest < Test::Unit::TestCase
     assert_equal(69, testGame.deck.size)
     assert_equal(12, testGame.dealers_hand.length)
     assert_equal(false, testGame.ended?)
-    assert_equal(nil, testGame.winner)
+    assert_equal("Fan", testGame.winner.name)
   end
 
 
