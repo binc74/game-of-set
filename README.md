@@ -37,11 +37,11 @@
 
 * Difficulty
 
-    1 - Hint shows two cards from a set
+    1 - Hint shows two cards from a set, and the initial dealers hand contains 29 - 42 sets of available sets
     
-    2 - Hint shows one card from a set
+    2 - Hint shows one card from a set, and the initial dealers hand contains 15 - 28 sets of available sets
     
-    3 - No hint
+    3 - No hint, and the initial dealers hand contains 1 - 14 sets of available sets
    
 * Timer - Counts the seconds gone by since the game started
 
@@ -73,6 +73,7 @@ Please list who did what for each part of the project.
 Also list if people worked together (pair programmed) on a particular section.
 
 Bin Chen:
+Research through the Gosu gems, build a naive MVC structure as the foundation of this project, and implement and test deck.rb
 
 Josh Wright:
 

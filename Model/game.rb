@@ -255,21 +255,6 @@ class Game
         # @has_chosen ? (result ? "This is a Set": "This is not a Set") : ""
     end
 
-    # Returns the possible number of set in the dealers hand. Does NOT consider (c1,c2,c3) and (c2,c1,c3) as two seperate sets
-    #@Author Josh Wright
-    def get_set_num_dealers_hand
-        sets = set[]
-        for card1 in @dealers_hand
-            for card2 in @dealers_hand
-                for card3 in @dealers_hand
-                    if card1 != card2 && card2 != card3 && card1 != card3 && is_set?([card1, card2, card3])
-                        sets.add(set[card1,card2,card3])
-                    end
-                end
-            end
-        end
-        return sets.size
-    end
 
     def ended?
         @has_ended
@@ -416,7 +401,7 @@ class Game
     #
     # adds attempt to player, checks if cards make a set, replaces set in dealers hand, logs winning hand to player as well as time hand was submitted,
     # displays last set of cards selected
-    def submit_set card_set_index
+    def submit_set(card_set_index)
         @has_chosen = true
         card_set_arr = card_set_index.to_a
         card_set_arr = [@dealers_hand[card_set_arr[0]],@dealers_hand[card_set_arr[1]],@dealers_hand[card_set_arr[2]]]
