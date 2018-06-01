@@ -11,14 +11,125 @@ require_relative "../Model/player"
 require 'test/unit'
 
 class GameTest < Test::Unit::TestCase
-  # test for constructor with no player and level 1 difficulty
+  # test for constructor with one player and level 1 difficulty
   def test_constructor_one_players_diff1
     testGame = Game.new(["Josh"], 1)
+    assert_equal(1,testGame.player_list.size)
     assert_equal(69, testGame.deck.size)
     assert_equal(12, testGame.dealers_hand.length)
     assert_equal(false, testGame.ended?)
     assert_equal(1,testGame.difficulty_level)
   end
+
+  def test_constructor_one_players_diff2
+    testGame = Game.new(["Josh"], 2)
+    assert_equal(1,testGame.player_list.size)
+    assert_equal(69, testGame.deck.size)
+    assert_equal(12, testGame.dealers_hand.length)
+    assert_equal(false, testGame.ended?)
+    assert_equal(2,testGame.difficulty_level)
+  end
+
+  def test_constructor_one_players_diff3
+    testGame = Game.new(["Josh"], 3)
+    assert_equal(1,testGame.player_list.size)
+    assert_equal(69, testGame.deck.size)
+    assert_equal(12, testGame.dealers_hand.length)
+    assert_equal(false, testGame.ended?)
+    assert_equal(3,testGame.difficulty_level)
+  end
+
+  # test for constructor with two players and level 1 difficulty
+  def test_constructor_two_players_diff1
+    testGame = Game.new(["Josh", "Fan"], 1)
+    assert_equal(2,testGame.player_list.size)
+    assert_equal(69, testGame.deck.size)
+    assert_equal(12, testGame.dealers_hand.length)
+    assert_equal(false, testGame.ended?)
+    assert_equal(1,testGame.difficulty_level)
+  end
+
+  # test for constructor with two players and level 2 difficulty
+  def test_constructor_two_players_diff2
+    testGame = Game.new(["Josh", "Fan"], 2)
+    assert_equal(2,testGame.player_list.size)
+    assert_equal(69, testGame.deck.size)
+    assert_equal(12, testGame.dealers_hand.length)
+    assert_equal(false, testGame.ended?)
+    assert_equal(2,testGame.difficulty_level)
+  end
+
+  # test for constructor with two players and level 3 difficulty
+  def test_constructor_two_players_diff3
+    testGame = Game.new(["Josh", "Fan"], 3)
+    assert_equal(2,testGame.player_list.size)
+    assert_equal(69, testGame.deck.size)
+    assert_equal(12, testGame.dealers_hand.length)
+    assert_equal(false, testGame.ended?)
+    assert_equal(3,testGame.difficulty_level)
+  end
+
+  # test for constructor with three players and level 1 difficulty
+  def test_constructor_three_players_diff1
+    testGame = Game.new(["Josh", "Fan", "Bin"], 1)
+    assert_equal(3,testGame.player_list.size)
+    assert_equal(69, testGame.deck.size)
+    assert_equal(12, testGame.dealers_hand.length)
+    assert_equal(false, testGame.ended?)
+    assert_equal(1,testGame.difficulty_level)
+  end
+
+  # test for constructor with three players and level 2 difficulty
+  def test_constructor_three_players_diff2
+    testGame = Game.new(["Josh", "Fan", "Bin"], 2)
+    assert_equal(3,testGame.player_list.size)
+    assert_equal(69, testGame.deck.size)
+    assert_equal(12, testGame.dealers_hand.length)
+    assert_equal(false, testGame.ended?)
+    assert_equal(2,testGame.difficulty_level)
+  end
+
+  # test for constructor with three players and level 3 difficulty
+  def test_constructor_three_players_diff3
+    testGame = Game.new(["Josh", "Fan", "Bin"], 3)
+    assert_equal(3,testGame.player_list.size)
+    assert_equal(69, testGame.deck.size)
+    assert_equal(12, testGame.dealers_hand.length)
+    assert_equal(false, testGame.ended?)
+    assert_equal(3,testGame.difficulty_level)
+  end
+
+  # test for constructor with four players and level 1 difficulty
+  def test_constructor_four_players_diff1
+    testGame = Game.new(["Josh", "Fan", "Bin", "Jeb"], 1)
+    assert_equal(4,testGame.player_list.size)
+    assert_equal(69, testGame.deck.size)
+    assert_equal(12, testGame.dealers_hand.length)
+    assert_equal(false, testGame.ended?)
+    assert_equal(1,testGame.difficulty_level)
+  end
+
+  # test for constructor with four players and level 2 difficulty
+  def test_constructor_four_players_diff2
+    testGame = Game.new(["Josh", "Fan", "Bin", "Jeb"], 2)
+    assert_equal(4,testGame.player_list.size)
+    assert_equal(69, testGame.deck.size)
+    assert_equal(12, testGame.dealers_hand.length)
+    assert_equal(false, testGame.ended?)
+    assert_equal(2,testGame.difficulty_level)
+  end
+
+  # test for constructor with four players and level 3 difficulty
+  def test_constructor_four_players_diff3
+    testGame = Game.new(["Josh", "Fan", "Bin", "Jeb"], 3)
+    assert_equal(4,testGame.player_list.size)
+    assert_equal(69, testGame.deck.size)
+    assert_equal(12, testGame.dealers_hand.length)
+    assert_equal(false, testGame.ended?)
+    assert_equal(3,testGame.difficulty_level)
+  end
+
+
   #
   # # test for constructor with one player and level 2 difficulty
   # def test_constructor_one_player_diff2
