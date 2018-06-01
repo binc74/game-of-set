@@ -242,21 +242,6 @@ class Game
         # @has_chosen ? (result ? "This is a Set": "This is not a Set") : ""
     end
 
-    # returns the possible number of set in the dealers hand
-    def get_set_num_dealers_hand
-        set_num = 0
-        for card1 in @dealers_hand
-            for card2 in @dealers_hand
-                for card3 in @dealers_hand
-                    if card1 != card2 && card2 != card3 && card1 != card3 && is_set?([card1, card2, card3])
-                        set_num += 1
-                    end
-                end
-            end
-        end
-        set_num
-    end
-
     #    ----    Setter Methods    ----    #
 
     # add buttons the @buttons
@@ -375,13 +360,11 @@ class Game
         end
     end
 
-<<<<<<< HEAD
+
     #Updates the cards that are being selected to form a set.
     # @Author
     # @updates card_chosen
-=======
     # updates @card_chosen, adds cards to array when clicked, removes them when unclicked, submits cards when three are selected
->>>>>>> origin/master
     def update_set!(i)
         if @card_chosen.include?(i)
             @card_chosen.delete(i)
@@ -393,15 +376,12 @@ class Game
         end
     end
 
-<<<<<<< HEAD
+
     #Submits three cards to try to make a set
     # @Author
     #
-=======
-
     # adds attempt to player, checks if cards make a set, replaces set in dealers hand, logs winning hand to player as well as time hand was submitted,
     # displays last set of cards selected
->>>>>>> origin/master
     def submit_set card_set_index
         @has_chosen = true
         card_set_arr = card_set_index.to_a
@@ -443,8 +423,6 @@ class Game
         12.times {|pos| @dealers_hand << get_card(@deck.remove!, pos)}
     end
 
-<<<<<<< HEAD
-=======
     # returns the possible number of set in the dealers hand
     def get_set_num_dealers_hand
         set_num = 0
@@ -459,9 +437,6 @@ class Game
         end
         set_num
     end
-
-
->>>>>>> origin/master
 end
 
 
