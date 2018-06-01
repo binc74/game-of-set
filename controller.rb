@@ -60,7 +60,7 @@ class Controller
   # update the model of game according to user's input
   #
   # Created by Bin Chen in 5/29/18
-  # Implemented by Bin Chen in 5/29/18 - deteccting the left mouse clicking
+  # Implemented by Bin Chen in 5/29/18 - detecting the left mouse clicking
   def update(mouse_pos)
     if Gosu.button_down? Gosu::MS_LEFT and not @is_pressed
       mouse_detection mouse_pos[0], mouse_pos[1]

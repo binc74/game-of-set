@@ -11,11 +11,11 @@ require 'test/unit'
 class CardTest < Test::Unit::TestCase
   # Called before every test method runs. Can be used
   # to set up fixture information.
-    def setup
-      # Since we don't need index and area in these tests, just set them a value
-      @index = 0
-      @area = Area.new 0, 0, 0, 0
-    end
+  def setup
+    # Since we don't need index and area in these tests, just set them a value
+    @index = 0
+    @area = Area.new 0, 0, 0, 0
+  end
 
   # test constructor with color 1, symbol 1, shading 1, number 1, area 1
   def test_constructor_11111
