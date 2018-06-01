@@ -20,9 +20,47 @@
     sudo gem install gosu
     ```
 
-* One of our members, Josh, have some important things to deal with so he is out of town in the second week, 
-so he might not be pushing often in the second week. But instead, he contributed a huge amount of work in the first week,
-so I think the work balance is fine
+### Running the Program
+* To run the program run the following command: `ruby main.rb`
+* Enter the number of players when asked
+* Enter the names of the players
+* Choose a difficulty (1-3)
+* A new window will appear with the game
+* Click on 3 cards to choose a set. Click a card again to deselect it
+* A card is selected when it is lit up
+* A message will appear on the bottom left of the screen informing the player if they have selected a set ot not
+* Change players by clicking on the name of the desired player
+* After the game is exited or ended a log will be printed in the terminal showing each set won by each player
+
+### Functionality
+* Hint - gives some kind of hint based on the difficulty selected
+
+* Difficulty
+
+    1 - Hint shows two cards from a set
+    
+    2 - Hint shows one card from a set
+    
+    3 - Hint prints number of sets available in the terminal
+   
+* Timer - Counts the seconds gone by since the game started
+
+* Sets Remain -  Shows the number of sets left
+
+* Winner - Displays the current winner
+
+* Last Set Found - Shows the last set found
+
+* Restart - Restarts the game
+
+* Game Log - Prints in terminal after game ends
+
+* Multiple players - Up to 4 players
+
+### Notes
+* One of our members, Josh, had some important things to deal with. He was out of town in the second week, 
+so he might not have been pushing often in the second week. But instead, he contributed a huge amount of work in the first week,
+so work balance is fine
 
 ### Roles
 * Overall Project Manager: Josh Wright
@@ -39,5 +77,6 @@ Bin Chen:
 Josh Wright:
 
 Jeb Alawi:
+Implemented Last Set Found, Timer, selection of cards in GUI, Hint button, replacing cards from a set in GUI
 
 Houyi Fan:
