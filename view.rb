@@ -103,13 +103,7 @@ class View
   # draw the current winner
   #   @Author Houyi Fan
   def draw_winner
-    @font_for_others.draw "Winner: #{
-      if @game.has_ended?
-        @game.winner.name
-      else
-        ""
-      end
-    }", WINNER_X, WINNER_Y, 0, 1.0, 1.0, Gosu::Color::RED
+    @font_for_others.draw "Winner: #{@game.winner.name}", WINNER_X, WINNER_Y, 0, 1.0, 1.0, Gosu::Color::RED
   end
 
   # draw a game menu on the lower right corner of windows
