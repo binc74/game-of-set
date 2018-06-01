@@ -31,9 +31,11 @@ class Game
 
     # @authors Josh Wright
     # @requires
-    #   |listOfPlayers| > 0
+    #   |player_names| > 0
     # @param
-    #   listOfPlayers - a list that contains all players in the game
+    #   player_names - a list that contains all players in the game
+    # @param
+    #   difficulty - the integer in the range 1..3 that indicates the difficulty level
     #
     # deck is the Deck used in the game. It has all cards that are not in dealersHand and winningsHand
     # dealersHand is the dealers hand list. It contains cards that are providing to players to judge currently. Initially it will have 12 cards
@@ -53,6 +55,7 @@ class Game
 
 
     #Checks to make sure that there isn't a draw between two players when the game has ended
+    # @Author
     # @requires has_ended = true
     # @returns true if more than one max score player and false otherwise
     def same_score? (max_score_player)
@@ -67,7 +70,10 @@ class Game
         count > 1
     end
 
-    #Builds the dealers hand according to the difficulty level set by the player
+    #Builds the dealers hand according to the difficulty level set by the player.
+    # @Author
+    # @updates dealers_hand
+    # @updates deck
     def get_dealers_hand_by_difficulty!
         shuffle
         num_set = get_set_num_dealers_hand
@@ -77,6 +83,12 @@ class Game
         end
     end
 
+    def dealers_hand
+        @dealers_hand
+    end
+    def player_list
+        @player_list
+    end
     #Checks to see if more than one player has the same number of attempts.
     # @author
     # @param max_score_player
@@ -178,8 +190,8 @@ class Game
     end
 
     #Determines if 3 cards make a set.
+    #@Author Josh Wright
     #@requires hand is a list of 3 cards and none of the cards in hand are the same card
-    #@author Josh Wright
     #@returns true if the hand makes a set and false otherwise
     def is_set?(hand)
         (set_color?(hand[0], hand[1], hand[2]) && set_symbol?(hand[0], hand[1], hand[2]) && set_shading?(hand[0], hand[1], hand[2]) && set_number?(hand[0], hand[1], hand[2]))
@@ -193,7 +205,7 @@ class Game
         (card1.color == card2.color && card2.color == card3.color && card1.color == card3.color) || (card1.color != card2.color && card2.color != card3.color && card1.color != card3.color)
     end
 
-    #Determines if 3 cards have the same symbol or 3 different symbols
+    #Determines if 3 cards have the same symbol or 3 different symbols.
     # @Author Josh Wright
     # @requires card1 != card2 != card3
     # @returns true if all 3 cards have same symbol or 3 different symbols and false otherwise
@@ -222,7 +234,7 @@ class Game
         b1 == b2 && b2 == b3 || (b1 != b2 && b2 != b3)
     end
 
-    # Get the card object
+    # Gets the card object ???
     # @Author
     # @returns
     def get_card(content, position)
@@ -231,7 +243,8 @@ class Game
                           CARD_START_Y + (position / CARD_EACH_ROW) * (CARD_SIZE_Y + CARD_INDENT_Y), CARD_SIZE_X, CARD_SIZE_Y)
     end
 
-    # returns a message after a player attempts
+
+    # returns a message after a players attempted move
     def result_message (result)
         # using if-else block to avoid nested ternary operators
         if @has_chosen
@@ -242,6 +255,26 @@ class Game
         # @has_chosen ? (result ? "This is a Set": "This is not a Set") : ""
     end
 
+    # Returns the possible number of set in the dealers hand. Does NOT consider (c1,c2,c3) and (c2,c1,c3) as two seperate sets
+    #@Author Josh Wright
+    def get_set_num_dealers_hand
+        sets = set[]
+        for card1 in @dealers_hand
+            for card2 in @dealers_hand
+                for card3 in @dealers_hand
+                    if card1 != card2 && card2 != card3 && card1 != card3 && is_set?([card1, card2, card3])
+                        sets.add(set[card1,card2,card3])
+                    end
+                end
+            end
+        end
+        return sets.size
+    end
+
+    def ended?
+        @has_ended
+    end
+
     #    ----    Setter Methods    ----    #
 
     # add buttons the @buttons
@@ -250,7 +283,7 @@ class Game
         @buttons << RestartButton.new(Area.new(RESTART_BUTTON_START_X, RESTART_BUTTON_START_Y, RESTART_BUTTON_SIZE_X, RESTART_BUTTON_SIZE_Y), self)
     end
 
-    # @Authors Josh Wright,
+    # @Authors ,Josh Wright
     # restart the game
     def restart
         @deck = Deck.new
@@ -365,6 +398,7 @@ class Game
     # @Author
     # @updates card_chosen
     # updates @card_chosen, adds cards to array when clicked, removes them when unclicked, submits cards when three are selected
+
     def update_set!(i)
         if @card_chosen.include?(i)
             @card_chosen.delete(i)
@@ -422,6 +456,7 @@ class Game
         @dealers_hand = []
         12.times {|pos| @dealers_hand << get_card(@deck.remove!, pos)}
     end
+
 
     # returns the possible number of set in the dealers hand
     def get_set_num_dealers_hand

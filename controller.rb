@@ -4,6 +4,7 @@
 # Edited by Houyi Fan in 5/30/18 - add the code that restarts the game when pressing restart button
 #                                  change the "Answer?" button to "Hint" button
 # Edited by Bin Chen in 5/31/18 - created a button class and refactor all the codes about buttons
+# Edited by Jeb Alawi on 5/30/18 - added mouse detection for card selection with update_set!
 
 require 'gosu'
 

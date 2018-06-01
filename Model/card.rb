@@ -17,6 +17,7 @@ class Card
   @@numbers = %w(1 2 3)
 
   #Constructor method for Card class
+  # @author Josh Wright
   # color must be {(1)red,(2)green, or (3)purple} - pick one
   # symbol must be {(1)diamond, (2)squiggle, or (3)oval} - pick one
   # shading must be {(1)open,(2)dashed, or (3)solid} - pick one
@@ -32,12 +33,14 @@ class Card
   end
 
   # getters that returns the word version of the attributes of card
+  # @author Josh Wright
   def color_str; @@colors[@color-1]; end
   def symbol_str; @@symbols[@symbol-1]; end
   def shading_str; @@shadings[@shading-1] ; end
   def number_str; @@numbers[@number -1]; end
 
   # returns the string representation of the card
+  # @Author Josh Wright
   def to_string
     "[" + @@colors[@color-1] + "," + @@symbols[@symbol-1] + "," + @@shadings[@shading-1] + "," + @@numbers[@number -1] + "]"
   end
