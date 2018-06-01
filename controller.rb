@@ -4,6 +4,7 @@
 # Edited by Houyi Fan in 5/30/18 - add the code that restarts the game when pressing restart button
 #                                  change the "Answer?" button to "Hint" button
 # Edited by Bin Chen in 5/31/18 - created a button class and refactor all the codes about buttons
+# Edited by Jeb Alawi on 5/30/18 - added mouse detection for card selection with update_set!
 
 require 'gosu'
 
@@ -60,7 +61,7 @@ class Controller
   # update the model of game according to user's input
   #
   # Created by Bin Chen in 5/29/18
-  # Implemented by Bin Chen in 5/29/18 - deteccting the left mouse clicking
+  # Implemented by Bin Chen in 5/29/18 - detecting the left mouse clicking
   def update(mouse_pos)
     if Gosu.button_down? Gosu::MS_LEFT and not @is_pressed
       mouse_detection mouse_pos[0], mouse_pos[1]
