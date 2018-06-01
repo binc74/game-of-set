@@ -44,6 +44,7 @@ class Controller
   # Created by Bin Chen in 5/29/18
   # Implemented by Bin Chen in 5/29/18 - deteccting the left mouse clicking
   # Edited by Jeb Alawi on 5/30/18 - update_set implemented
+  # Edited by Houyi Fan in 5/30/18 - add the hint and restart button(now moved to button class)
   def mouse_detection(x, y)
     @game.dealers_hand.each_index {|i|
       @game.update_set! i if is_in_area? x, y, @game.dealers_hand[i].area
@@ -59,6 +60,9 @@ class Controller
 
 
   # update the model of game according to user's input
+  #
+  # mouse_pos - a list that contains two float values, mouse_x and mouse_y, where (mouse_x, mouse_y) is the position of cursor on the window
+  #             position of cursor on the window
   #
   # Created by Bin Chen in 5/29/18
   # Implemented by Bin Chen in 5/29/18 - detecting the left mouse clicking

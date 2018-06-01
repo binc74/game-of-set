@@ -37,11 +37,11 @@
 
 * Difficulty
 
-    1 - Hint shows two cards from a set
+    1 - Hint shows two cards from a set, and the initial dealers hand contains more than 4 sets of available sets
     
-    2 - Hint shows one card from a set
+    2 - Hint shows one card from a set, and the initial dealers hand contains 3 to 4 sets of available sets
     
-    3 - No hint
+    3 - No hint, and the initial dealers hand contains 1 to 2 sets of available sets
    
 * Timer - Counts the seconds gone by since the game started
 
@@ -73,6 +73,7 @@ Please list who did what for each part of the project.
 Also list if people worked together (pair programmed) on a particular section.
 
 Bin Chen:
+Research through the Gosu gems, build a naive MVC structure as the foundation of this project, and implement and test deck.rb
 
 Josh Wright: Came up with the initial/primitive model designs including Card, Deck, Player, and Game. 
 Implemented the Card class, a large portion of the Game class, some game_test methods, and some of the Deck class. 
@@ -82,3 +83,4 @@ Jeb Alawi:
 Implemented Last Set Found, Timer, selection of cards in GUI, Hint button, replacing cards from a set in GUI
 
 Houyi Fan:
+Added image for each card. Implemented Restart button, result message, difficulty, and the code to determine who is the current winner. 
