@@ -17,22 +17,6 @@ class GameTest < Test::Unit::TestCase
     @area = Area.new 0, 0, 0, 0
   end
 
-
-  # Written by: Jeb Alawi
-  # setWinner
-  def test_set_winner
-    bob = Player.new("Bob", 0)
-    ross = Player.new("Ross", 1)
-    game = Game.new([bob, ross], 1)
-    card1 = Card.new(1,1,1,1, @index, @area)
-    hand1 = [card1, card1, card1]
-    bob.add_winning_hand(hand1)
-    winner = game.set_winner!
-    assert_equal("Bob", winner.name)
-  end
-
-  # winner
-
   # Written by: Jeb Alawi
   # listOfPlayers
   def test_list_player
